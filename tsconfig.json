@@ -29,7 +29,9 @@
       "@components/*": ["./components/*"],
       "@lib/*": ["./lib/*"],
       "@utils/*": ["./utils/*"],
-      "@constants/*": ["./constants/*"]
+      "@utils": ["./utils/index"],
+      "@constants/*": ["./constants/*"],
+      "@hooks/*": ["./hooks/*"]
     }
   },
   "exclude": ["node_modules"],

@@ -1,5 +1,10 @@
 import type { Viewport, Metadata } from "next"
+
+import StyledJsxRegistry from "./registry"
+
 import "./globals.css"
+
+import Footer from "@components/Footer"
 
 export default function RootLayout({
   children
@@ -11,7 +16,12 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/icon.png" />
       </head>
-      <body>{children}</body>
+      <body suppressHydrationWarning={true}>
+        <StyledJsxRegistry>
+          {children}
+          <Footer />
+        </StyledJsxRegistry>
+      </body>
     </html>
   )
 }
