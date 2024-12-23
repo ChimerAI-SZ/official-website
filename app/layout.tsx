@@ -5,6 +5,7 @@ import StyledJsxRegistry from "./registry"
 import "./globals.css"
 
 import Footer from "@components/Footer"
+import Header from "@components/Header"
 
 export default function RootLayout({
   children
@@ -18,6 +19,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning={true}>
         <StyledJsxRegistry>
+          <Header />
           {children}
           <Footer />
         </StyledJsxRegistry>
