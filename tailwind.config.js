@@ -58,7 +58,11 @@ module.exports = {
   				'5': 'hsl(var(--chart-5))'
   			}
   		}
-  	}
+  	},
+  	fontFamily: {
+  		inter: ['Inter', 'sans-serif'],
+  	},
   },
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require("tailwindcss-animate")]
 }
