@@ -13,38 +13,46 @@ const ServicesPage = () => {
   const [selectedNav, setSelectedNav] = useState("Trend")
 
   return (
-    <ServicesContainer>
-      <NavBar>
-        <NavContent>
-          <NavActiveBg
-            $left={navList.find(item => item.label === selectedNav)?.left ?? 0}
-            $width={navList.find(item => item.label === selectedNav)?.width ?? 0}
-          />
-          {navList.map(item => (
-            <NavItem
-              key={item.label}
-              $width={item.width}
-              $active={selectedNav === item.label}
-              onClick={() => setSelectedNav(item.label)}
-            >
-              {item.label}
-            </NavItem>
-          ))}
-        </NavContent>
-      </NavBar>
-      {selectedNav === "Trend" && <Trend />}
-      {selectedNav === "Design" && <Design />}
-      {selectedNav === "Supply Chain" && <SupplyChain />}
-    </ServicesContainer>
+    <Container>
+      <ServicesContainer>
+        <NavBar>
+          <NavContent>
+            <NavActiveBg
+              $left={navList.find(item => item.label === selectedNav)?.left ?? 0}
+              $width={navList.find(item => item.label === selectedNav)?.width ?? 0}
+            />
+            {navList.map(item => (
+              <NavItem
+                key={item.label}
+                $width={item.width}
+                $active={selectedNav === item.label}
+                onClick={() => setSelectedNav(item.label)}
+              >
+                {item.label}
+              </NavItem>
+            ))}
+          </NavContent>
+        </NavBar>
+
+        {selectedNav === "Trend" && <Trend />}
+        {selectedNav === "Design" && <Design />}
+        {selectedNav === "Supply Chain" && <SupplyChain />}
+      </ServicesContainer>
+    </Container>
   )
 }
+const Container = styled.div`
+  background-color: #faf9fb;
 
+  --gradient-primary: linear-gradient(90deg, #a8cef5 0%, #cecff7 35%, #e3c8e9 65%, #f3d2bb 100%);
+`
 const ServicesContainer = styled.div`
-  max-width: 1200px;
   margin: 0 auto;
 
   height: 100vh;
   padding-top: 72px;
+
+  overflow: visible;
 `
 
 const NavBar = styled.section`
@@ -58,7 +66,7 @@ const NavBar = styled.section`
   border-radius: 100px;
 
   margin: 40px auto;
-  background: var(--222, linear-gradient(77deg, #008ff7 -8.4%, #a090f9 33.27%, #ef6cbc 61.49%, #fea324 86.49%));
+  background: var(--gradient-primary);
   z-index: 20;
 `
 
@@ -76,6 +84,7 @@ const NavContent = styled.div`
 `
 
 const NavActiveBg = styled.div<{ $width: number; $left: number }>`
+  border-radius: 100px;
   background: linear-gradient(
     86deg,
     rgba(0, 143, 247, 0.1) 5.27%,
@@ -83,12 +92,10 @@ const NavActiveBg = styled.div<{ $width: number; $left: number }>`
     rgba(239, 108, 188, 0.1) 78.9%,
     rgba(254, 163, 36, 0.1) 98.84%
   );
-
   position: absolute;
   left: ${props => props.$left}px;
   width: ${props => props.$width}px;
   height: calc(100% - 4px);
-  border-radius: 100px;
   z-index: 0;
 
   transition: all 0.5s ease;
