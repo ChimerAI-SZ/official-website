@@ -2531,6 +2531,11 @@
   dependencies:
     csstype "^3.0.2"
 
+"@types/swiper@^5.4.3":
+  version "5.4.3"
+  resolved "https://registry.npmmirror.com/@types/swiper/-/swiper-5.4.3.tgz#a1420bd9737626e630bb116d711efde34f5b9e99"
+  integrity sha512-hJXpVeANf+XQXgbvmuFZdsnaSOKqOEZcaLDnHhZOJDRow+lfboatwubW+Ay9XiHobMGyEomkgpXSYRlDVn4gMQ==
+
 "@typescript-eslint/eslint-plugin@^5.4.2 || ^6.0.0 || ^7.0.0 || ^8.0.0":
   version "8.18.1"
   resolved "https://registry.npmmirror.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-8.18.1.tgz#992e5ac1553ce20d0d46aa6eccd79dc36dedc805"
@@ -5024,6 +5029,11 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmmirror.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
+
+swiper@^11.1.15:
+  version "11.1.15"
+  resolved "https://registry.npmmirror.com/swiper/-/swiper-11.1.15.tgz#e2258c8d38282e2f115ca463d6e8c5b84cdcf1ca"
+  integrity sha512-IzWeU34WwC7gbhjKsjkImTuCRf+lRbO6cnxMGs88iVNKDwV+xQpBCJxZ4bNH6gSrIbbyVJ1kuGzo3JTtz//CBw==
 
 tailwind-merge@^1.14.0:
   version "1.14.0"
