@@ -2,11 +2,12 @@
 
 import { useState } from "react"
 import styled from "@emotion/styled"
+import Image from "next/image"
 
 import Trend from "./components/Trend"
 import Design from "./components/Design"
 
-import { navList } from "./constant"
+import { messageList, navList } from "./constant"
 import SupplyChain from "./components/SupplyChain"
 
 const ServicesPage = () => {
@@ -38,6 +39,17 @@ const ServicesPage = () => {
         {selectedNav === "Design" && <Design />}
         {selectedNav === "Supply Chain" && <SupplyChain />}
       </ServicesContainer>
+      <MessageContainer>
+        <Message>{messageList.find(item => item.key === selectedNav)?.value}</Message>
+        <MessageImg>
+          <Image
+            src={`/assets/images/services/${messageList.find(item => item.key === selectedNav)?.img}`}
+            alt="message"
+            width={662}
+            height={300}
+          />
+        </MessageImg>
+      </MessageContainer>
     </Container>
   )
 }
@@ -128,6 +140,58 @@ const NavItem = styled.div<{ $active: boolean; $width: number }>`
   &:not(:last-child) {
     margin-right: 6px;
   }
+`
+const MessageContainer = styled.div`
+  position: relative;
+  margin: 0 auto;
+  height: 70vh;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -150px; /* 调整光晕的位置 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 750px; /* 调整光晕的宽度 */
+    height: 270px; /* 调整光晕的高度 */
+    background: linear-gradient(
+      86deg,
+      rgba(0, 143, 247, 0.2) 5.27%,
+      rgba(160, 144, 249, 0.2) 39.5%,
+      rgba(239, 108, 188, 0.2) 78.9%,
+      rgba(254, 163, 36, 0.2) 98.84%
+    );
+    pointer-events: none;
+    z-index: 0;
+
+    filter: blur(25px);
+    border-radius: 100%;
+  }
+`
+
+const Message = styled.div`
+  width: 1020px;
+  margin: 0 auto;
+
+  color: rgba(0, 0, 0, 0.88);
+  text-align: center;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 34px;
+`
+
+const MessageImg = styled.div`
+  position: absolute;
+  bottom: 72px;
+  right: 72px;
 `
 
 export default ServicesPage

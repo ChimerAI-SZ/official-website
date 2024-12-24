@@ -13,12 +13,12 @@ const Address = () => {
 }
 
 const AddressSection = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
-  color: var(--Graysclae-300, #d4d4d4);
+  color: #d4d4d4
   font-family: Inter;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: 24px; /* 171.429% */
+  line-height: 24px;
   width: 280px;
 
   & > h3 {
@@ -28,17 +28,17 @@ const AddressSection = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
     font-size: ${({ $isMobile }) => ($isMobile ? "12px" : "16px")};
     font-style: normal;
     font-weight: 500;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
     margin-bottom: 8px;
   }
 
   & > p {
-    color: var(--Neutral-White, #fff);
+    color: #fff;
     font-family: Inter;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
-    line-height: 24px; /* 150% */
+    line-height: 24px;
 
     margin-bottom: 16px;
   }
