@@ -1,10 +1,13 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
-import Link from "next/link"
+import Image from "next/image"
+
 import styled from "@emotion/styled"
 import { isTablet, isMobileOnly } from "react-device-detect"
-// import { getDeviceInfo } from "@utils"
+
+import Nav from "./components/Nav"
+import Address from "./components/Address"
 
 const Footer: React.FC = () => {
   const [mounted, setMounted] = useState(false)
@@ -27,45 +30,27 @@ const Footer: React.FC = () => {
     <FooterContainer>
       <Container $isMobile={isMobileOnly} $isTablet={isTablet}>
         <LogoSection $isMobile={isMobileOnly} $isTablet={isTablet}>
-          <Logo>CREAMODA</Logo>
+          <Logo>
+            <Image
+              src={`/assets/images/logo-white.png`}
+              alt="CREAMODA"
+              width={200}
+              height={26}
+              className="object-contain"
+              priority
+            />
+          </Logo>
           <Description>
             CREAMODA is an AI-powered clothing design and supply chain platform, offering a comprehensive end-to-end
             service for independent fashion brands and retailers, from design to wholesale.
           </Description>
         </LogoSection>
 
-        <NavWrapper $isMobile={isMobileOnly} $isTablet={isTablet}>
-          <Section>
-            <h3>Explore</h3>
-            <nav>
-              <Link href="/">Home</Link>
-              <Link href="/services">Services</Link>
-              <Link href="/about">About Us</Link>
-              <Link href="/contact">Get in Touch</Link>
-            </nav>
-          </Section>
-
-          <Section>
-            <h3>Link</h3>
-            <nav>
-              <Link href="/privacy">Privacy Policy</Link>
-              <Link href="/terms">Term & Conditions</Link>
-              <Link href="/faqs">FAQs</Link>
-            </nav>
-          </Section>
-        </NavWrapper>
-
-        <AddressSection $isMobile={isMobileOnly} $isTablet={isTablet}>
-          <h3>Address</h3>
-          <p>3 Fraser Street #04-23A Duo Tower, Singapore 189352</p>
-          <h3>Contact</h3>
-          <a href="mailto:contact@creamoda.ai">contact@creamoda.ai</a>
-        </AddressSection>
+        <Nav />
+        <Address />
       </Container>
 
-      <Copyright>
-        <p>© 2024 Company Name® Global Inc.</p>
-      </Copyright>
+      <Copyright>© 2024 Company Name® Global Inc.</Copyright>
     </FooterContainer>
   )
 }
@@ -73,8 +58,8 @@ const Footer: React.FC = () => {
 // 基础的 Footer 容器
 const FooterContainer = styled.footer`
   width: 100%;
-  background-color: #f5f5f5;
-  padding: 40px 0 20px;
+  background-color: rgba(23, 23, 23, 0.8);
+  padding: 60px 120px 24px;
 `
 
 // 主容器
@@ -82,15 +67,15 @@ const Container = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-  display: grid;
-  grid-template-columns: ${({ $isMobile, $isTablet }) =>
-    $isMobile ? "1fr" : $isTablet ? "repeat(2, 1fr)" : "repeat(4, 1fr)"};
-  gap: 30px;
+  display: flex;
+  flex-direction: row;
+  gap: 103px;
 `
 
 // Logo 部分
 const LogoSection = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
-  grid-column: ${({ $isMobile, $isTablet }) => ($isMobile ? "1" : $isTablet ? "1 / span 2" : "1 / span 2")};
+  flex: 1;
+  min-width: 280px;
 `
 
 const Logo = styled.h2`
@@ -99,56 +84,29 @@ const Logo = styled.h2`
 `
 
 const Description = styled.p`
-  color: #666;
-  line-height: 1.6;
-`
-
-// 导航包装器
-const NavWrapper = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
-  display: grid;
-  grid-template-columns: ${({ $isMobile }) => ($isMobile ? "1fr" : "repeat(2, 1fr)")};
-  gap: 20px;
-  grid-column: ${({ $isMobile, $isTablet }) => ($isMobile ? "1" : $isTablet ? "1 / span 2" : "3 / span 1")};
-`
-
-// 各个区块的通用样式
-const Section = styled.div`
-  h3 {
-    font-size: 18px;
-    margin-bottom: 15px;
-  }
-
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  a {
-    color: #666;
-    text-decoration: none;
-    &:hover {
-      color: #000;
-    }
-  }
-`
-
-// 地址区块
-const AddressSection = styled(Section)<{ $isMobile: boolean; $isTablet: boolean }>`
-  grid-column: ${({ $isMobile, $isTablet }) => ($isMobile ? "1" : $isTablet ? "1 / span 2" : "4 / span 1")};
+  color: var(--Graysclae-300, #d4d4d4);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 171.429% */
+  max-width: 280px;
 `
 
 // 版权信息
 const Copyright = styled.div`
-  text-align: center;
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid #eee;
+  color: #ebebeb;
 
-  p {
-    color: #666;
-    font-size: 14px;
-  }
+  /* Medium/ Regular */
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+
+  text-align: center;
+
+  margin-top: 56px;
 `
 
 export default Footer
