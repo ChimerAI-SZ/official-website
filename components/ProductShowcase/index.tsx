@@ -19,7 +19,7 @@ const ProductShowcase = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2
-            className="font-inter text-[2.75rem] font-bold leading-[3.375rem] mb-6"
+            className="text-[1.5rem] xs:text-[1.125rem] sm:text-[0.75606rem] md:text-[2.375rem] lg:text-[3.5rem] xl:text-[2.75rem] 2xl:text-[2.75rem] font-inter font-bold  mb-6"
             style={{
               background: "linear-gradient(90deg, #008FF7 0.36%, #A090F9 34.87%, #EF6CBC 65.42%, #FEA324 99.09%)",
               WebkitBackgroundClip: "text",
@@ -29,7 +29,7 @@ const ProductShowcase = () => {
           >
             Building an Aesthetic and Impact-Driven Fashion World
           </h2>
-          <p className="font-inter text-[1.5rem] font-medium leading-[2.25rem] text-white text-center">
+          <p className="font-inter text-[0.75rem] xs:text-[0.75rem] sm:text-[0.75rem] md:text-[0.75rem] lg:text-[1.5rem]  font-medium  text-white text-center">
             A fashion design and supply chain platform powered by fashion data and AI, offering end-to-end services from
             design to finished garments.
           </p>

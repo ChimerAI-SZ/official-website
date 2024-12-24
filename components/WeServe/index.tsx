@@ -18,24 +18,25 @@ const WeServe = () => {
   const [activeTab, setActiveTab] = useState<Tab>("Fashionistas")
 
   return (
-    <section className="relative w-full bg-[#000B1F] py-16 md:py-24 overflow-hidden">
+    <section className="relative w-full py-16 md:py-24 overflow-hidden">
       {/* 背景图片 */}
-      <div className="absolute inset-0 w-full h-full">
-        <Image
-          src="/assets/images/home/fashionista-bg.png"
-          alt="Background"
-          fill
-          className="object-cover opacity-20"
-          priority
-        />
+      <div
+        style={{
+          background: "#010509"
+        }}
+        className="absolute inset-0 w-full h-full"
+      >
+        <Image src="/assets/images/home/fashionista-bg.png" alt="Background" fill />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <h2 className="text-white text-center font-inter text-[2.75rem] font-bold mb-12">We serve</h2>
+        <h2 className="lg:text-[2.75rem] md:text-[1.5rem] sm:text-[1.125rem] text-[1.125rem] text-white text-center font-inter  font-bold mb-12">
+          We serve
+        </h2>
 
         {/* Tabs */}
         <div className="flex justify-center mb-12">
-          <div className="bg-[#1A1A1A]/60 rounded-full p-1 flex gap-2">
+          <div className=" bg-white/20 rounded-full p-[0.375rem] flex gap-[0.375rem]">
             {tabs.map(tab => (
               <button
                 key={tab}
@@ -54,14 +55,14 @@ const WeServe = () => {
 
         {/* Content */}
         <div className="relative max-w-5xl mx-auto">
-          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-black/20">
+          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden">
             {/* 内容图片容器 */}
-            <div className="absolute inset-0 w-[80%] h-[90%] m-auto">
+            <div className="absolute inset-0 w-[57.625rem] h-[32.4375rem] m-auto">
               {tabs.map(tab => (
                 <div
                   key={tab}
-                  className={`absolute inset-0 transition-opacity duration-500 ${
-                    activeTab === tab ? "opacity-100" : "opacity-0"
+                  className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+                    activeTab === tab ? "opacity-100 transform translate-x-0" : "opacity-0 transform -translate-x-full"
                   }`}
                 >
                   <Image

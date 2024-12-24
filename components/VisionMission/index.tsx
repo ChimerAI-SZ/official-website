@@ -4,18 +4,20 @@ import Image from "next/image"
 
 const VisionMission = () => {
   return (
-    <section className="w-full bg-black py-16 md:py-24">
-      <div className="container mx-auto px-4">
-        <h2 className="text-white text-center font-inter text-[2.75rem] font-bold mb-12">Vision & Mission</h2>
+    <section className="w-full bg-black h-[42.9375rem]">
+      <div className="container mx-auto pt-[7.5rem]">
+        <h2 className="text-[1.25rem] lg:text-[2.75rem] md:text-[1.5rem] sm:text-[1.5rem]  text-white text-center font-inter font-bold mb-12">
+          Vision & Mission
+        </h2>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:gap-[6.75rem] md:gap-[1.5rem]  mx-auto">
           {/* Vision Card */}
-          <div className="relative h-[280px] rounded-2xl overflow-hidden">
-            <Image src="/assets/images/home/Vision.png" alt="Vision" fill className="object-cover" />
+          <div className="relative lg:h-[20.375rem] md:h-[12.125rem] md:w-[20rem]  sm:h-[16.875rem] sm:w-[16.875rem] lg:w-[33.75rem] rounded-2xl overflow-hidden shrink-0">
+            <Image src="/assets/images/home/Vision.png" alt="Vision" fill />
           </div>
 
-          <div className="relative h-[280px] rounded-2xl overflow-hidden">
-            <Image src="/assets/images/home/Mission.png" alt="Mission" fill className="object-cover" />
+          <div className="relative lg:h-[20.375rem] md:h-[12.125rem] md:w-[20rem]  sm:h-[16.875rem] sm:w-[16.875rem] lg:w-[33.75rem] rounded-2xl overflow-hidden shrink-0">
+            <Image src="/assets/images/home/Mission.png" alt="Mission" fill />
           </div>
         </div>
       </div>

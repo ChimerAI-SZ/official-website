@@ -31,7 +31,7 @@ const carouselImages = [
 
 export default function Home() {
   return (
-    <main>
+    <main className="pt-[70px] ">
       <Carousel images={carouselImages} />
       <ProductShowcase />
       <VisionMission />
@@ -39,9 +39,6 @@ export default function Home() {
       <WhyCreamoda />
       <ShowcaseCarousel />
       <OrderInfo />
-      <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold mt-8">Official Website</h1>
-      </div>
     </main>
   )
 }
