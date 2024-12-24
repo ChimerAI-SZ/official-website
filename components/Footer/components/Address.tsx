@@ -12,41 +12,7 @@ const Address = () => {
   )
 }
 
-// 各个区块的通用样式
-const Section = styled.div`
-  width: 168px;
-  h3 {
-    color: rgba(255, 255, 255, 0.5);
-
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px; /* 150% */
-    margin-bottom: 24px;
-  }
-
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  a {
-    color: var(--Neutral-White, #fff);
-    font-family: Inter;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px; /* 150% */
-
-    &:hover {
-      color: #000;
-    }
-  }
-`
-
-const AddressSection = styled(Section)<{ $isMobile: boolean; $isTablet: boolean }>`
+const AddressSection = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
   color: var(--Graysclae-300, #d4d4d4);
   font-family: Inter;
   font-size: 14px;
@@ -59,11 +25,10 @@ const AddressSection = styled(Section)<{ $isMobile: boolean; $isTablet: boolean 
     color: rgba(255, 255, 255, 0.5);
 
     font-family: Inter;
-    font-size: 16px;
+    font-size: ${({ $isMobile }) => ($isMobile ? "12px" : "16px")};
     font-style: normal;
     font-weight: 500;
     line-height: 24px; /* 150% */
-
     margin-bottom: 8px;
   }
 

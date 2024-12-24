@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import Image from "next/image"
 import styles from "./Header.module.css"
 import clsx from "clsx"
+import { isTablet, isBrowser } from "react-device-detect"
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -27,8 +28,8 @@ const Header = () => {
             <Image
               src={`/assets/images/logo-${isHome ? "white" : "black"}.png`}
               alt="CREAMODA"
-              width={220}
-              height={32}
+              width={isBrowser ? 220 : isTablet ? 180 : 82}
+              height={isBrowser ? 32 : isTablet ? 26 : 13}
               className="object-contain"
               priority
             />
