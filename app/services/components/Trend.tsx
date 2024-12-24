@@ -5,7 +5,7 @@ import { trendList } from "../constant"
 
 const Trend = () => {
   return (
-    <TrendContainer>
+    <TrendContainer className="trend-tab-container">
       <ImageGrid>
         <Ribbon>
           <Image
@@ -47,7 +47,7 @@ const Trend = () => {
 
 const TrendContainer = styled.div`
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 36px;
   padding: 0 1rem;
 
   @media screen and (min-width: 1920px) {

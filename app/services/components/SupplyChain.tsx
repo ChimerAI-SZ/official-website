@@ -81,7 +81,7 @@ const SupplyChain = () => {
   }, [checkScroll])
 
   return (
-    <Container>
+    <Container className="supply-chain-tab-container">
       <ScrollContainer ref={containerRef} className="scroll-container">
         <ItemContainer>
           <CardSet>

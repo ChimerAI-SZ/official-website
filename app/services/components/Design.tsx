@@ -5,7 +5,7 @@ import { designList } from "../constant"
 
 const Trend = () => {
   return (
-    <DesignContainer>
+    <DesignContainer className="design-tab-container">
       <ImageGrid>
         <Ribbon>
           <Image
