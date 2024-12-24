@@ -1,45 +1,63 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Navigation, Autoplay } from "swiper/modules"
 import Image from "next/image"
 
-// 生成图片数组，从1到23
-const showcaseItems = Array.from({ length: 23 }, (_, i) => ({
-  image: `/assets/images/dresses/${i + 1}.jpeg`,
-  title: `Dress ${i + 1}`
-}))
+// Import Swiper styles
+import "swiper/css"
+import "swiper/css/navigation"
 
 const ShowcaseCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % showcaseItems.length)
-    }, 3000) // 调整为3秒切换一次，因为图片较多
-
-    return () => clearInterval(timer)
-  }, [])
+  // 生成1到23的图片数组
+  const items = Array.from({ length: 23 }, (_, i) => ({
+    image: `/assets/images/dresses/${i + 1}.jpeg`,
+    title: `Dress ${i + 1}`
+  }))
 
   return (
-    <section className="w-full bg-gradient-to-r from-[#000B1F] via-[#321B47] to-[#321B47] py-16 md:py-24">
-      <div className="container mx-auto px-4">
-        <h2 className="text-white text-center font-inter text-[2.75rem] font-bold mb-16">Showcase</h2>
+    <section className="w-full relative bg-gradient-to-r from-[#000B1F] via-[#321B47] to-[#321B47] py-16 md:py-24">
+      <div className="absolute inset-0 w-full h-full" style={{ background: "#010509" }}>
+        <Image src="/assets/images/home/showcase-bg.png" alt="Background" fill />
+      </div>
 
-        {/* 轮播容器 */}
-        <div className="relative max-w-7xl mx-auto">
-          <div className="flex gap-6 overflow-hidden">
-            {showcaseItems.map((item, index) => (
-              <div
-                key={index}
-                className={`relative w-[300px] h-[400px] rounded-2xl overflow-hidden flex-shrink-0 transition-transform duration-500`}
-                style={{
-                  transform: `translateX(-${currentIndex * (300 + 24)}px)` // 300px 宽度 + 24px 间距
-                }}
-              >
-                <Image src={item.image} alt={item.title} fill className="object-cover" sizes="300px" />
-              </div>
+      <div className="relative z-10">
+        <div className="container mx-auto px-4 mt-[0.9rem] mb-[1.875rem]">
+          <h2 className="lg:text-[2.75rem] md:text-[1.5rem] sm:text-[1.125rem] text-[1.125rem] text-white text-center font-inter font-[800]">
+            Showcase
+          </h2>
+        </div>
+
+        <div className="relative">
+          <Swiper
+            modules={[Navigation, Autoplay]}
+            spaceBetween={24}
+            slidesPerView="auto"
+            centeredSlides={false}
+            loop={true}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false
+            }}
+            className="!px-4"
+          >
+            {items.map((item, index) => (
+              <SwiperSlide key={index} className="!w-auto">
+                <div className="w-[23.4375rem] h-[31.25rem]">
+                  <div className="w-full h-full rounded-2xl overflow-hidden relative">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      width={375}
+                      height={500}
+                      className="w-full h-full object-cover"
+                      sizes="375px"
+                    />
+                  </div>
+                </div>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
       </div>
     </section>
