@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react"
 import styled from "@emotion/styled"
 import { supplyChainList } from "../constant"
+import Image from "next/image"
 
 const SupplyChain = () => {
   const [canScrollLeft, setCanScrollLeft] = useState(false)
@@ -97,10 +98,24 @@ const SupplyChain = () => {
       </ScrollContainer>
       <ButtonGroup>
         <NavButton onClick={handlePrev} disabled={!canScrollLeft} $isDisabled={!canScrollLeft}>
-          <div>&lt;</div>
+          <div>
+            <Image
+              src={`/assets/images/services/left_arrow${canScrollLeft ? "" : "_disabled"}.svg`}
+              alt="arrow-left"
+              width={15}
+              height={15}
+            />
+          </div>
         </NavButton>
         <NavButton onClick={handleNext} disabled={!canScrollRight} $isDisabled={!canScrollRight}>
-          <div>&gt;</div>
+          <div>
+            <Image
+              src={`/assets/images/services/right_arrow${canScrollRight ? "" : "_disabled"}.svg`}
+              alt="arrow-right"
+              width={15}
+              height={15}
+            />
+          </div>
         </NavButton>
       </ButtonGroup>
     </Container>
@@ -111,6 +126,8 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   margin: 0 auto;
+
+  flex-grow: 1;
 `
 
 const ScrollContainer = styled.div`
@@ -123,9 +140,13 @@ const ScrollContainer = styled.div`
   // 添加 scroll-padding 以及 ItemContainer 里的 padding 才会正常显示溢出部分
   scroll-padding: calc((100vw - 1200px) / 2);
 
-  height: 50vh;
+  height: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+
+  @media screen and (min-height: 800px) {
+    align-items: center;
+  }
 
   &::-webkit-scrollbar {
     display: none;
@@ -143,7 +164,7 @@ const ItemContainer = styled.div`
   row-gap: 0px;
   width: -moz-fit-content;
   width: fit-content;
-  padding: 0 calc((100vw - 1200px) / 2);
+  padding: 36px calc((100vw - 1200px) / 2);
 `
 
 const CardSet = styled.ul`
@@ -160,7 +181,6 @@ const CardSet = styled.ul`
   margin: 0;
   list-style: none;
 
-  background: rgba(255, 255, 255, 0.5);
   position: relative;
   z-index: 1;
 
@@ -232,9 +252,11 @@ const ButtonGroup = styled.div`
   justify-content: flex-end;
 
   max-width: 1200px;
-  gap: 20px;
+  gap: 16px;
 
-  margin-top: 30px;
+  position: absolute;
+  bottom: 36px;
+  right: calc((100vw - 1200px) / 2);
 `
 
 const NavButton = styled.button<{ $isDisabled?: boolean }>`

@@ -53,6 +53,10 @@ const ServicesContainer = styled.div`
   padding-top: 72px;
 
   overflow: visible;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 const NavBar = styled.section`
@@ -68,6 +72,8 @@ const NavBar = styled.section`
   margin: 40px auto;
   background: var(--gradient-primary);
   z-index: 20;
+
+  flex-shrink: 0;
 `
 
 const NavContent = styled.div`
