@@ -5,40 +5,56 @@ import { designList } from "../constant"
 
 const Trend = () => {
   return (
-    <ImageGrid>
-      <Ribbon>
-        <Image
-          src="/assets/images/services/ribbon.png"
-          alt="Ribbon"
-          width={360}
-          height={100}
-          style={{
-            width: "120%",
-            marginLeft: "-10%"
-          }}
-        />
-      </Ribbon>
-      {designList.map(item => (
-        <ImageWrapper key={item.key} style={{ zIndex: item.key <= 2 ? 15 : 5 }}>
+    <DesignContainer className="design-tab-container">
+      <ImageGrid>
+        <Ribbon>
           <Image
-            src={`/assets/images/services/design_${item.key}.png`}
-            alt={`design ${item.key}`}
-            layout="intrinsic"
-            objectFit="contain"
-            width={300}
-            height={300}
-            priority={item.key === 1}
+            src="/assets/images/services/ribbon.png"
+            alt="Ribbon"
+            width={360}
+            height={100}
+            style={{
+              width: "120%",
+              marginLeft: "-10%"
+            }}
           />
-          <TrendTitle>
-            <div>
-              <div>{item.label}</div>
-            </div>
-          </TrendTitle>
-        </ImageWrapper>
-      ))}
-    </ImageGrid>
+        </Ribbon>
+        {designList.map(item => (
+          <ImageWrapper key={item.key} style={{ zIndex: item.key <= 2 ? 15 : 5 }}>
+            <Image
+              src={`/assets/images/services/design_${item.key}.png`}
+              alt={`design ${item.key}`}
+              width={300}
+              height={300}
+              quality={100}
+              style={{
+                objectFit: "contain",
+                width: "auto",
+                height: "100%"
+              }}
+              priority={item.key === 1}
+            />
+            <TrendTitle>
+              <div>
+                <div>{item.label}</div>
+              </div>
+            </TrendTitle>
+          </ImageWrapper>
+        ))}
+      </ImageGrid>
+    </DesignContainer>
   )
 }
+
+const DesignContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @media screen and (min-width: 1920px) {
+    max-width: 1400px;
+  }
+`
 
 const ImageGrid = styled.div`
   position: relative;
@@ -66,12 +82,17 @@ const ImageWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   width: 100%;
-  height: 50vh;
+  height: 60vh;
+  min-height: 400px;
+
+  @media screen and (min-width: 1920px) {
+    height: 70vh;
+  }
 
   img {
-    object-fit: cover;
+    position: relative !important;
+    object-fit: contain;
     border-radius: 8px;
   }
 `
