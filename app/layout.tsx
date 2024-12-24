@@ -1,4 +1,5 @@
 import type { Viewport, Metadata } from "next"
+import { NextUIProvider } from "@nextui-org/react"
 
 import StyledJsxRegistry from "./registry"
 
@@ -18,11 +19,13 @@ export default function RootLayout({
         <link rel="icon" href="/icon.png" />
       </head>
       <body suppressHydrationWarning={true}>
-        <StyledJsxRegistry>
-          <Header />
-          {children}
-          <Footer />
-        </StyledJsxRegistry>
+        <NextUIProvider>
+          <StyledJsxRegistry>
+            <Header />
+            {children}
+            <Footer />
+          </StyledJsxRegistry>
+        </NextUIProvider>
       </body>
     </html>
   )
