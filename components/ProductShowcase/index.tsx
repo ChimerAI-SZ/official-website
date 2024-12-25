@@ -11,15 +11,22 @@ const ProductShowcase = () => {
           src="/assets/images/home/phone-bg.png"
           alt="Background Pattern"
           fill
-          className="object-cover opacity-30"
+          className="hidden md:block object-cover opacity-30"
+          priority
+        />
+        <Image
+          src="/assets/images/home/xs-phone-bg.png"
+          alt="Background Pattern"
+          fill
+          className="md:hidden block object-cover opacity-30"
           priority
         />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center mb-16">
+        <div className="mx-auto text-center mb-16 flex flex-col items-center justify-center">
           <h2
-            className="text-[1.5rem] xs:text-[1.125rem] sm:text-[0.75606rem] md:text-[2.375rem] lg:text-[3.5rem] xl:text-[2.75rem] 2xl:text-[2.75rem] font-inter font-bold  mb-6"
+            className="text-[1.125rem] xs:text-[1.125rem] md:text-[1.5rem] lg:text-[2.75rem] font-inter font-bold mb-6 mx-auto"
             style={{
               background: "linear-gradient(90deg, #008FF7 0.36%, #A090F9 34.87%, #EF6CBC 65.42%, #FEA324 99.09%)",
               WebkitBackgroundClip: "text",
@@ -29,14 +36,14 @@ const ProductShowcase = () => {
           >
             Building an Aesthetic and Impact-Driven Fashion World
           </h2>
-          <p className="font-inter text-[0.75rem] xs:text-[0.75rem] sm:text-[0.75rem] md:text-[0.75rem] lg:text-[1.5rem]  font-medium  text-white text-center">
+          <p className="max-w-[53.125rem] mx-auto font-inter text-[0.75rem] lg:text-[1.5rem] font-medium text-white text-center">
             A fashion design and supply chain platform powered by fashion data and AI, offering end-to-end services from
             design to finished garments.
           </p>
         </div>
 
         {/* 中心手机展示 */}
-        <div className="relative w-[15rem] h-[32.48rem] mx-auto mb-8">
+        <div className="relative lg:w-[15rem] lg:h-[32.48rem] md:w-[7.5rem] md:h-[16.24rem] w-[14.375rem] h-[31.12669rem] mx-auto mb-8">
           <div className="relative z-10 w-full h-full">
             <Image
               src="/assets/images/home/phone-mockup.png"
@@ -54,12 +61,19 @@ const ProductShowcase = () => {
 
         {/* 渐变按钮 */}
         <button
-          className="w-[19.375rem] h-16 rounded-[2.5rem] mx-auto block hover:opacity-90 transition-opacity"
+          className="flex gap-[0.88rem] items-center justify-center lg:w-[19.375rem] lg:h-16 rounded-[2.5rem] md:w-[10.5rem] md:h-[2.25rem] w-[10.5rem] h-[2.25rem] mx-auto hover:opacity-90 transition-opacity"
           style={{
             background: "linear-gradient(95deg, #008FF7 -1.08%, #A090F9 37.36%, #EF6CBC 81.61%, #FEA324 104%)"
           }}
         >
-          <span className="font-inter text-white font-medium">Get Started</span>
+          <span className="font-inter text-white font-extrabold lg:text-[2rem] text-[1rem]">Get Started</span>
+          <Image
+            src="/assets/images/home/arrow-right.svg"
+            alt="Arrow Right"
+            width={20}
+            height={20}
+            className="w-[1.25rem] h-[1.25rem]"
+          />
         </button>
       </div>
     </section>
