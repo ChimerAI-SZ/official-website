@@ -19,7 +19,8 @@ const AccordionList = [
   {
     key: 4,
     title: "What is the production process?",
-    content: "Supply Chain"
+    content: "View our supply chain →",
+    isLink: true
   },
   {
     key: 5,
@@ -30,14 +31,32 @@ const AccordionList = [
   {
     key: 6,
     title: "What are the main factors that affect the final price?",
-    content: ` 1.  Prices may vary depending on: 
-    2. Ordered Quantity
-    3. Number of Sizes/Colors
-        ▪ Example: Ordering 100 pieces in 3 sizes (S, M, L) is more cost-effective than ordering 100 pieces in 6 sizes (XS, S, M, L, XL, XXL).
-    4. Textile/Fabric Composition
-        ▪ Example: T-shirts made from polyester are generally cheaper than those made from cotton or viscose.
-    5. Quality of Production
-        ▪ Example: Customized designs involving specialized stitching, accessories, or buttons will incur higher costs per unit. Additionally, different stitching techniques, such as flat-lock stitching versus reverse cross-stitching, can affect the overall price.`
+    content: [
+      {
+        title: "Prices may vary depending on:",
+        list: [
+          {
+            subtitle: "Ordered Quantity",
+            content: ""
+          },
+          {
+            subtitle: "Number of Sizes/Colors",
+            content:
+              "Example: Ordering 100 pieces in 3 sizes (S, M, L) is more cost-effective than ordering 100 pieces in 6 sizes (XS, S, M, L, XL, XXL)."
+          },
+          {
+            subtitle: "Textile/Fabric Composition",
+            content:
+              "Example: T-shirts made from polyester are generally cheaper than those made from cotton or viscose."
+          },
+          {
+            subtitle: "Quality of Production",
+            content:
+              "Example: Customized designs involving specialized stitching, accessories, or buttons will incur higher costs per unit. Additionally, different stitching techniques, such as flat-lock stitching versus reverse cross-stitching, can affect the overall price."
+          }
+        ]
+      }
+    ]
   },
   {
     key: 7,

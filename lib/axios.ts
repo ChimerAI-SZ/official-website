@@ -106,3 +106,5 @@ const removePendingRequest = (config: AxiosRequestConfig): void => {
     }
   )
 })
+
+export default instance

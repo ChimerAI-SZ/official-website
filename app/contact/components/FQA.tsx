@@ -23,7 +23,25 @@ const FQA = () => {
               />
             )}
           >
-            <AccordionContent>{item.content}</AccordionContent>
+            {Array.isArray(item.content) ? (
+              item.content.map((content, index) => (
+                <AccordionContent key={index}>
+                  {content.title}
+                  {content.list.map((list, index) => (
+                    <AccordionContent key={index}>
+                      <ContentSubTitle>{list.subtitle}</ContentSubTitle>
+                      {list.content}
+                    </AccordionContent>
+                  ))}
+                </AccordionContent>
+              ))
+            ) : item.isLink ? (
+              <AccordionContent>
+                <ContentLink>{item.content}</ContentLink>
+              </AccordionContent>
+            ) : (
+              <AccordionContent>{item.content}</AccordionContent>
+            )}
           </AccordionItem>
         ))}
       </StyledAccordion>
@@ -59,7 +77,8 @@ const AccordionContent = styled.div`
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 24px; /* 150% */
+  line-height: 24px;
+  margin-bottom: 10px;
 `
 
 const StyledAccordion = styled(Accordion)`
@@ -70,6 +89,33 @@ const StyledAccordion = styled(Accordion)`
     box-shadow: unset;
     background-color: #f3f0f5;
   }
+`
+
+const ContentSubTitle = styled.div`
+  color: #747474;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+`
+
+const ContentLink = styled.a`
+  color: #0928db;
+
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+
+  cursor: pointer;
 `
 
 export default FQA

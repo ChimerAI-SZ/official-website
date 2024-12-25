@@ -7,7 +7,7 @@ const Address = () => {
       <h3>Address</h3>
       <p>3 Fraser Street #04-23A Duo Tower, Singapore 189352</p>
       <h3>Contact</h3>
-      <a href="mailto:contact@creamoda.ai">contact@creamoda.ai</a>
+      <p>contact@creamoda.ai</p>
     </AddressSection>
   )
 }
