@@ -7,45 +7,60 @@ type Tab = "Fashionistas" | "Indie Brand" | "Retailer" | "Fashion Giant"
 
 const tabs: Tab[] = ["Fashionistas", "Indie Brand", "Retailer", "Fashion Giant"]
 
-const tabImages: Record<Tab, string> = {
-  Fashionistas: "/assets/images/home/fashionista1.png",
-  "Indie Brand": "/assets/images/home/fashionista2.png",
-  Retailer: "/assets/images/home/fashionista3.png",
-  "Fashion Giant": "/assets/images/home/fashionista4.png"
+const tabImages: Record<Tab, { desktop: string; mobile: string }> = {
+  Fashionistas: {
+    desktop: "/assets/images/home/fashionista1.png",
+    mobile: "/assets/images/home/xs-fashionista1.png"
+  },
+  "Indie Brand": {
+    desktop: "/assets/images/home/fashionista2.png",
+    mobile: "/assets/images/home/xs-fashionista2.png"
+  },
+  Retailer: {
+    desktop: "/assets/images/home/fashionista3.png",
+    mobile: "/assets/images/home/xs-fashionista3.png"
+  },
+  "Fashion Giant": {
+    desktop: "/assets/images/home/fashionista4.png",
+    mobile: "/assets/images/home/xs-fashionista4.png"
+  }
 }
 
 const WeServe = () => {
   const [activeTab, setActiveTab] = useState<Tab>("Fashionistas")
 
   return (
-    <section className="relative w-full py-16 md:py-24 overflow-hidden">
+    <section className="relative w-full py-8 sm:py-16 lg:py-24 overflow-hidden">
       {/* 背景图片 */}
-      <div
-        style={{
-          background: "#010509"
-        }}
-        className="absolute inset-0 w-full h-full"
-      >
+      <div className="absolute inset-0 w-full h-full bg-[#010509]">
         <Image src="/assets/images/home/fashionista-bg.png" alt="Background" fill />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <h2 className="lg:text-[2.75rem] md:text-[1.5rem] sm:text-[1.125rem] text-[1.125rem] text-white text-center font-inter  font-bold mb-12">
-          We serve
-        </h2>
+        <h2 className="text-2xl sm:text-3xl lg:text-5xl text-white text-center font-inter font-bold mb-12">We serve</h2>
 
         {/* Tabs */}
         <div className="flex justify-center mb-12">
-          <div className=" bg-white/20 rounded-full p-[0.375rem] flex gap-[0.375rem]">
+          <div className="bg-white/20 rounded-full p-0.5 sm:p-1.5 flex gap-0.5 sm:gap-1.5">
             {tabs.map(tab => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-6 py-2 rounded-full font-inter transition-all ${
-                  activeTab === tab
-                    ? "bg-gradient-to-r from-[#2B8FFF] to-[#D233FF] text-white"
-                    : "text-white/60 hover:text-white"
-                }`}
+                className={`
+                  flex-shrink-0 
+                  text-xs sm:text-sm lg:text-base
+                  px-2 sm:px-4 lg:px-6 
+                  py-1 sm:py-1.5 lg:py-2
+                  rounded-full 
+                  font-inter 
+                  transition-all
+                  whitespace-nowrap
+                  ${
+                    activeTab === tab
+                      ? "bg-gradient-to-r from-[#2B8FFF] to-[#D233FF] text-white"
+                      : "text-white/60 hover:text-white"
+                  }
+                `}
               >
                 {tab}
               </button>
@@ -55,9 +70,9 @@ const WeServe = () => {
 
         {/* Content */}
         <div className="relative max-w-5xl mx-auto">
-          <div className="relative aspect-[16/9] rounded-2xl overflow-hidden">
-            {/* 内容图片容器 */}
-            <div className="absolute inset-0 w-[57.625rem] h-[32.4375rem] m-auto">
+          <div className="relative sm:aspect-[16/9] aspect-[9/16] rounded-2xl overflow-hidden">
+            {/* 内容图片容器 - 移除固定宽高，使用百分比和 aspect ratio 来控制 */}
+            <div className="absolute inset-0 w-full h-full">
               {tabs.map(tab => (
                 <div
                   key={tab}
@@ -65,11 +80,20 @@ const WeServe = () => {
                     activeTab === tab ? "opacity-100 transform translate-x-0" : "opacity-0 transform -translate-x-full"
                   }`}
                 >
+                  {/* 桌面端图片 */}
                   <Image
-                    src={tabImages[tab]}
+                    src={tabImages[tab].desktop}
                     alt={`${tab} Content`}
                     fill
-                    className="object-contain"
+                    className="object-contain hidden sm:block"
+                    priority={tab === "Fashionistas"}
+                  />
+                  {/* 移动端图片 */}
+                  <Image
+                    src={tabImages[tab].mobile}
+                    alt={`${tab} Content`}
+                    fill
+                    className="object-contain sm:hidden"
                     priority={tab === "Fashionistas"}
                   />
                 </div>

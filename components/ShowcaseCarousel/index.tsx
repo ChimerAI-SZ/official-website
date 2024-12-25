@@ -43,7 +43,7 @@ const ShowcaseCarousel = () => {
           >
             {items.map((item, index) => (
               <SwiperSlide key={index} className="!w-auto">
-                <div className="w-[23.4375rem] h-[31.25rem]">
+                <div className="lg:w-[23.4375rem] lg:h-[31.25rem] w-[11rem] h-[14.625rem]">
                   <div className="w-full h-full rounded-2xl overflow-hidden relative">
                     <Image
                       src={item.image}
