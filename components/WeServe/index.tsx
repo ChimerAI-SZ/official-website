@@ -30,7 +30,7 @@ const WeServe = () => {
   const [activeTab, setActiveTab] = useState<Tab>("Fashionistas")
 
   return (
-    <section className="relative w-full py-8 sm:py-16 lg:py-24 overflow-hidden">
+    <section className="relative w-full  sm:py-16 lg:py-24 overflow-hidden">
       {/* 背景图片 */}
       <div className="absolute inset-0 w-full h-full bg-[#010509]">
         <Image src="/assets/images/home/fashionista-bg.png" alt="Background" fill />

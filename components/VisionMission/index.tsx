@@ -4,7 +4,7 @@ import Image from "next/image"
 
 const VisionMission = () => {
   return (
-    <section className="w-full bg-black lg:h-[42.9375rem] md:h-[22.125rem] h-[48.375rem] md:min-h-0">
+    <section className="w-full bg-[#010509] lg:h-[42.9375rem] md:h-[22.125rem] h-[48.375rem] md:min-h-0">
       <div className="container mx-auto lg:pt-[7.5rem] pt-[3.75rem]">
         <h2 className="lg:text-[2.75rem] md:text-[1.5rem] sm:text-[1.125rem] text-[1.125rem] text-white text-center font-inter font-extrabold lg:mb-[4.25rem] md:mb-[2.25rem] mb-[2rem]">
           Vision & Mission

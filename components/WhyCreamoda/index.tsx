@@ -4,7 +4,7 @@ import Image from "next/image"
 
 const WhyCreamoda = () => {
   return (
-    <section className="relative w-full py-16 md:py-24 overflow-hidden bg-[#000B1F] ">
+    <section className="relative w-full py-16 md:py-24 overflow-hidden bg-[#010509] ">
       {/* 背景图片 */}
       <div className="absolute inset-0 w-full h-full">
         {/* 渐变遮罩 */}
