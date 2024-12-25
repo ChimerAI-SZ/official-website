@@ -10,7 +10,6 @@ import Nav from "./components/Nav"
 import Address from "./components/Address"
 
 const Footer: React.FC = () => {
-  console.log(isTablet, isMobileOnly, isBrowser)
   const [mounted, setMounted] = useState(false)
   useEffect(() => {
     setMounted(true)
