@@ -2,15 +2,20 @@ import { useState, useEffect, useRef, useCallback } from "react"
 import styled from "@emotion/styled"
 import { supplyChainList } from "../constant"
 import { Image } from "@nextui-org/react"
+import { isBrowser, isMobileOnly, isTablet } from "react-device-detect"
 
 const SupplyChain = () => {
+  console.log(isBrowser, isMobileOnly)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
+  const [maxWidth, setMaxWidth] = useState(1200)
 
   const containerRef = useRef<HTMLDivElement>(null)
 
   // 检查滚动位置
   const checkScroll = useCallback(() => {
+    setMaxWidth(window.innerWidth)
+
     if (containerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = containerRef.current
       // 使用更精确的滚动位置判断
@@ -81,7 +86,7 @@ const SupplyChain = () => {
   }, [checkScroll])
 
   return (
-    <Container className="supply-chain-tab-container">
+    <Container className="supply-chain-tab-container" $maxWidth={maxWidth}>
       <ScrollContainer ref={containerRef} className="scroll-container">
         <ItemContainer>
           <CardSet>
@@ -122,12 +127,13 @@ const SupplyChain = () => {
   )
 }
 
-const Container = styled.div`
+const Container = styled.div<{ $maxWidth: number }>`
   position: relative;
   width: 100%;
   margin: 0 auto;
 
   flex-grow: 1;
+  --max-width: ${props => (isBrowser ? "1200px" : props.$maxWidth + "px")};
 `
 
 const ScrollContainer = styled.div`
@@ -138,15 +144,26 @@ const ScrollContainer = styled.div`
   scroll-behavior: smooth;
   scrollbar-width: none;
   // 添加 scroll-padding 以及 ItemContainer 里的 padding 才会正常显示溢出部分
-  scroll-padding: calc((100vw - 1200px) / 2);
+  scroll-padding: calc((100vw - var(--max-width)) / 2);
+  ${isMobileOnly &&
+  `
+    scroll-padding: 48px;
+  `}
+  ${isTablet &&
+  `
+    scroll-padding: 100px;
+  `}
 
   height: 100%;
   display: flex;
   align-items: flex-start;
 
-  @media screen and (min-height: 800px) {
-    align-items: center;
-  }
+  ${isBrowser &&
+  `
+    @media screen and (min-height: 800px) {
+      align-items: center;
+    }
+  `}
 
   &::-webkit-scrollbar {
     display: none;
@@ -164,13 +181,22 @@ const ItemContainer = styled.div`
   row-gap: 0px;
   width: -moz-fit-content;
   width: fit-content;
-  padding: 36px calc((100vw - 1200px) / 2);
+  padding: 56px calc((100vw - var(--max-width)) / 2);
+
+  ${isMobileOnly &&
+  `
+    padding: 56px 48px;
+  `}
+  ${isTablet &&
+  `
+    padding: 56px 100px;
+  `}
 `
 
 const CardSet = styled.ul`
   display: grid;
   grid-template-rows: repeat(1, auto);
-  grid-template-columns: max-content;
+  grid-template-columns: repeat(6, 1fr);
   grid-auto-flow: column;
   grid-column-gap: 45px;
   column-gap: 45px;
@@ -199,7 +225,7 @@ const CardSet = styled.ul`
       rgba(254, 163, 36, 0.1) 98.84%
     );
     border-radius: 24px;
-    filter: blur(10px);
+    filter: blur(30px);
     z-index: -1;
   }
 `
@@ -228,7 +254,7 @@ const Card = styled.div<{ $bgImage: string }>`
   z-index: 1;
   width: 310px;
   height: 100%;
-  padding: 36px 24px 106px 64px;
+  padding: ${isMobileOnly ? "85px 16px 78px 46px" : "36px 24px 106px 64px"};
 
   background-image: url(${props => props.$bgImage});
   background-size: cover;
@@ -242,7 +268,7 @@ const CardTitle = styled.h3`
 
   color: #000;
   font-family: Inter;
-  font-size: 24px;
+  font-size: ${isMobileOnly ? "16px" : "24px"};
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -251,21 +277,22 @@ const CardContent = styled.p`
   color: #000;
 
   font-family: Inter;
-  font-size: 16px;
+  font-size: ${isMobileOnly ? "12px" : "16px"};
   font-style: normal;
   font-weight: 400;
-  line-height: 21px;
+  line-height: ${isMobileOnly ? "17px" : "21px"};
 `
 const ButtonGroup = styled.div`
   display: flex;
   justify-content: flex-end;
 
-  max-width: 1200px;
+  max-width: var(--max-width);
   gap: 16px;
 
   position: absolute;
   bottom: 36px;
-  right: calc((100vw - 1200px) / 2);
+  right: calc((100vw - var(--max-width)) / 2);
+  ${!isBrowser && `right: 48px;`}
 `
 
 const NavButton = styled.button<{ $isDisabled?: boolean }>`

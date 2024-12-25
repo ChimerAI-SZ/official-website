@@ -20,7 +20,6 @@ const Header = () => {
     { label: "Get in Touch", href: "/contact" }
   ]
 
-  console.log(isBrowser, isTablet)
   return (
     <header className={clsx(styles.header, isHome ? styles.header_home : styles.header_default)}>
       <div className={styles.container}>

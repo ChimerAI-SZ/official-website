@@ -181,13 +181,13 @@ const MessageContainer = styled.div`
     top: -150px; /* 调整光晕的位置 */
     left: 50%;
     transform: translateX(-50%);
-    width: 750px; /* 调整光晕的宽度 */
-    height: 270px; /* 调整光晕的高度 */
+    width: 60%;
+    height: 30%;
 
-    ${isMobileOnly &&
+    ${isBrowser &&
     `
-      width: 60%;
-      height: 30%;
+      width: 750px; /* 调整光晕的宽度 */
+      height: 270px; /* 调整光晕的高度 */
     `}
 
     background: linear-gradient(
@@ -226,7 +226,20 @@ const Message = styled.div`
     font-style: normal;
     font-weight: 400;
     line-height: 20px; 
-    `}
+  `}
+
+  ${isTablet &&
+  `
+    width: 100%; 
+    margin: 0 100px;
+    color: rgba(0, 0, 0, 0.88);
+    text-align: center;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; /* 140% */
+  `}
 `
 
 const MessageImg = styled.div<{ $isBrowser: boolean; $isTablet: boolean }>`

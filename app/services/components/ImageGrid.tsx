@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import Image from "next/image"
-import { memo } from "react"
-import { isBrowser } from "react-device-detect"
+import { memo, useCallback, useEffect, useRef, useState } from "react"
+import { isBrowser, isMobileOnly, isTablet } from "react-device-detect"
 
 interface RibbonProps {
   src: string
@@ -25,6 +25,10 @@ interface TrendProps {
 }
 
 const Trend: React.FC<TrendProps> = ({ list, keyword }) => {
+  const [canScrollLeft, setCanScrollLeft] = useState(false)
+  const [canScrollRight, setCanScrollRight] = useState(true)
+  const containerRef = useRef<HTMLDivElement>(null)
+
   const renderRibbons = (index: number) => {
     if (!isBrowser) return null
 
@@ -73,11 +77,66 @@ const Trend: React.FC<TrendProps> = ({ list, keyword }) => {
     return null
   }
 
+  // 处理滚动按钮点击
+  const handlePrev = () => {
+    if (containerRef.current && canScrollLeft) {
+      const cardWidth = 300
+      const gap = 32
+      const targetScroll = containerRef.current.scrollLeft - (cardWidth + gap)
+      containerRef.current.scrollTo({
+        left: Math.max(0, targetScroll),
+        behavior: "smooth"
+      })
+    }
+  }
+
+  const handleNext = () => {
+    if (containerRef.current && canScrollRight) {
+      const cardWidth = 300
+      const gap = 32
+      const targetScroll = containerRef.current.scrollLeft + (cardWidth + gap)
+      containerRef.current.scrollTo({
+        left: targetScroll,
+        behavior: "smooth"
+      })
+    }
+  }
+
+  // 检查滚动位置
+  const checkScroll = useCallback(() => {
+    if (containerRef.current && !isBrowser) {
+      const { scrollLeft, scrollWidth, clientWidth } = containerRef.current
+      setCanScrollLeft(scrollLeft > 0)
+      setCanScrollRight(Math.ceil(scrollLeft + clientWidth) < scrollWidth)
+    }
+  }, [])
+
+  // 添加滚动检测效果
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      checkScroll()
+    }, 0)
+    return () => clearTimeout(timer)
+  }, [checkScroll])
+
+  useEffect(() => {
+    const container = containerRef.current
+    if (container && !isBrowser) {
+      container.addEventListener("scroll", checkScroll)
+      window.addEventListener("resize", checkScroll)
+    }
+
+    return () => {
+      container?.removeEventListener("scroll", checkScroll)
+      window.removeEventListener("resize", checkScroll)
+    }
+  }, [checkScroll])
+
   return (
     <TrendContainer className={`${keyword}-tab-container`}>
-      <ImageGrid>
+      <ImageGrid ref={containerRef} $isMobile={!isBrowser}>
         {list.map((item, index) => (
-          <ImageItem key={item.key}>
+          <ImageItem key={item.key} $isMobile={!isBrowser}>
             {renderRibbons(index)}
             <ImageWrapper style={{ zIndex: item.key <= 2 ? 15 : 5 }}>
               <Image
@@ -89,7 +148,7 @@ const Trend: React.FC<TrendProps> = ({ list, keyword }) => {
                 style={{
                   objectFit: "contain",
                   width: "auto",
-                  height: "100%"
+                  height: "calc(100% - 50px)"
                 }}
                 priority={item.key === 1}
               />
@@ -102,26 +161,68 @@ const Trend: React.FC<TrendProps> = ({ list, keyword }) => {
           </ImageItem>
         ))}
       </ImageGrid>
+      {!isBrowser && (
+        <ButtonGroup>
+          <NavButton onClick={handlePrev} disabled={!canScrollLeft} $isDisabled={!canScrollLeft}>
+            <div>
+              <Image
+                src={`/assets/images/services/left_arrow${canScrollLeft ? "" : "_disabled"}.svg`}
+                alt="arrow-left"
+                width={15}
+                height={15}
+              />
+            </div>
+          </NavButton>
+          <NavButton onClick={handleNext} disabled={!canScrollRight} $isDisabled={!canScrollRight}>
+            <div>
+              <Image
+                src={`/assets/images/services/right_arrow${canScrollRight ? "" : "_disabled"}.svg`}
+                alt="arrow-right"
+                width={15}
+                height={15}
+              />
+            </div>
+          </NavButton>
+        </ButtonGroup>
+      )}
     </TrendContainer>
   )
 }
 
 const TrendContainer = styled.div`
   max-width: 1200px;
-  margin: 0 auto 36px;
-  padding: 0 1rem;
+  ${!isBrowser &&
+  `
+    max-width: 100%;
+    margin: 0 auto 36px;
+  `}
 
   @media screen and (min-width: 1920px) {
     max-width: 1400px;
   }
 `
 
-const ImageGrid = styled.div`
+const ImageGrid = styled.div<{ $isMobile: boolean }>`
   position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: ${isBrowser ? "64px" : isMobileOnly ? "0.5rem" : "32px"};
   margin: 2rem 0;
+  padding: 0 ${isTablet ? "54px" : "1rem"};
+  scroll-padding: ${isTablet ? "54px" : "1rem"};
+
+  ${props =>
+    props.$isMobile &&
+    `
+    margin: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  `}
 `
 
 const Ribbon = styled.div`
@@ -132,8 +233,14 @@ const Ribbon = styled.div`
   z-index: 10;
 `
 
-const ImageItem = styled.div`
+const ImageItem = styled.div<{ $isMobile: boolean }>`
   position: relative;
+  ${props =>
+    props.$isMobile &&
+    `
+    scroll-snap-align: start;
+    min-width:250px;
+  `}
 `
 
 const ImageWrapper = styled.div`
@@ -185,6 +292,37 @@ const TrendTitle = styled.span`
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+  }
+`
+
+const ButtonGroup = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 20px;
+  padding: 0 1rem;
+`
+
+const NavButton = styled.button<{ $isDisabled?: boolean }>`
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${props => (props.$isDisabled ? "#999" : "white")};
+  cursor: ${props => (props.$isDisabled ? "not-allowed" : "pointer")};
+
+  & > div {
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `
 
