@@ -10,14 +10,12 @@ import {
   Form,
   Modal,
   ModalContent,
-  ModalHeader,
   ModalBody,
   ModalFooter
 } from "@nextui-org/react"
 
 import { scaleList, platformList as initPlatformList } from "../constant"
 import { fetchVerification } from "@lib/request/contact"
-import { errorCaptureRes } from "@utils/index"
 
 import styles from "../Contact.module.css"
 

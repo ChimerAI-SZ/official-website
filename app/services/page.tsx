@@ -4,11 +4,10 @@ import { useState } from "react"
 import styled from "@emotion/styled"
 import Image from "next/image"
 
-import Trend from "./components/Trend"
-import Design from "./components/Design"
-
-import { messageList, navList } from "./constant"
+import ImageGrid from "./components/ImageGrid"
 import SupplyChain from "./components/SupplyChain"
+
+import { messageList, navList, trendList, designList } from "./constant"
 
 const ServicesPage = () => {
   const [selectedNav, setSelectedNav] = useState("Trend")
@@ -35,8 +34,8 @@ const ServicesPage = () => {
           </NavContent>
         </NavBar>
 
-        {selectedNav === "Trend" && <Trend />}
-        {selectedNav === "Design" && <Design />}
+        {selectedNav === "Trend" && <ImageGrid keyword="trend" list={trendList} />}
+        {selectedNav === "Design" && <ImageGrid keyword="design" list={designList} />}
         {selectedNav === "Supply Chain" && <SupplyChain />}
       </ServicesContainer>
       <MessageContainer>
@@ -57,6 +56,7 @@ const Container = styled.div`
   background-color: #faf9fb;
 
   --gradient-primary: linear-gradient(90deg, #a8cef5 0%, #cecff7 35%, #e3c8e9 65%, #f3d2bb 100%);
+  --gradient-heavy: linear-gradient(77deg, #008ff7 -8.4%, #a090f9 33.27%, #ef6cbc 61.49%, #fea324 86.49%);
 `
 const ServicesContainer = styled.div`
   margin: 0 auto;
@@ -145,6 +145,7 @@ const MessageContainer = styled.div`
   position: relative;
   margin: 0 auto;
   height: 70vh;
+  min-height: 700px;
   overflow: visible;
   display: flex;
   justify-content: center;

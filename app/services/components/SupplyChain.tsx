@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react"
 import styled from "@emotion/styled"
 import { supplyChainList } from "../constant"
-import Image from "next/image"
+import { Image } from "@nextui-org/react"
 
 const SupplyChain = () => {
   const [canScrollLeft, setCanScrollLeft] = useState(false)
@@ -85,9 +85,9 @@ const SupplyChain = () => {
       <ScrollContainer ref={containerRef} className="scroll-container">
         <ItemContainer>
           <CardSet>
-            {supplyChainList.map(item => (
+            {supplyChainList.map((item, index) => (
               <CardBox key={item.key}>
-                <Card>
+                <Card $bgImage={`/assets/images/services/card_bg_${index}.png`}>
                   <CardTitle>{item.title}</CardTitle>
                   <CardContent>{item.content}</CardContent>
                 </Card>
@@ -210,6 +210,8 @@ const CardBox = styled.li`
   position: relative;
   z-index: 1;
 
+  overflow: hidden;
+
   border-radius: 20px;
   background: linear-gradient(147deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 100.08%);
 
@@ -220,12 +222,19 @@ const CardBox = styled.li`
   }
 `
 
-const Card = styled.div`
+const Card = styled.div<{ $bgImage: string }>`
   // 确保卡片内容可见
   position: relative;
   z-index: 1;
   width: 310px;
-  padding: 36px 24px 64px;
+  height: 100%;
+  padding: 36px 24px 106px 64px;
+
+  background-image: url(${props => props.$bgImage});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-clip: padding-box;
 `
 
 const CardTitle = styled.h3`
