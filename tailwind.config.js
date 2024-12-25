@@ -1,5 +1,6 @@
 // tailwind.config.js
 import { nextui } from "@nextui-org/react"
+import animatePlugin from "tailwindcss-animate"
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -8,10 +9,7 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-
-    // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
-
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
@@ -66,13 +64,25 @@ module.exports = {
       },
       screens: {
         xs: "320px"
-      }
+      },
+      animation: {
+        'scroll-left': 'scroll-left 130s linear infinite',
+        'scroll-right': 'scroll-right 120s linear infinite',
+      },
+      keyframes: {
+        'scroll-left': {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        'scroll-right': {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+      },
     },
     fontFamily: {
       inter: ["Inter", "sans-serif"]
     }
   },
-  darkMode: "class",
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  plugins: [require("tailwindcss-animate"), nextui()]
+  plugins: [animatePlugin, nextui()]
 }
