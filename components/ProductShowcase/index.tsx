@@ -21,6 +21,13 @@ const ProductShowcase = () => {
           className="md:hidden block object-cover opacity-30"
           priority
         />
+        <Image
+          src="/assets/images/home/phone-bg-b.png"
+          alt="Bottom Background Pattern"
+          fill
+          className="object-cover"
+          priority
+        />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -49,8 +56,7 @@ const ProductShowcase = () => {
               src="/assets/images/home/phone-mockup.png"
               alt="App Interface"
               fill
-              className="object-cover"
-              style={{ backgroundColor: "lightgray" }}
+              className="object-contain"
               priority
             />
           </div>
