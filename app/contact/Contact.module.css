@@ -1,0 +1,4 @@
+.otherPlatform:focus,
+.otherPlatform:hover {
+  background-color: unset !important;
+}
