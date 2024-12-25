@@ -26,8 +26,8 @@ const OrderInfo = () => {
 
         <div className="flex flex-col lg:flex-row md:flex-row xs:flex-col gap-5 items-center justify-center">
           {/* Sample Card */}
-          <div className="relative backdrop-blur rounded-2xl lg:w-[26.25rem] lg:h-[19.5rem] md:w-[13.75rem] md:h-[10.125rem] w-[19.4375rem] h-[9.625rem] overflow-hidden">
-            <div className="absolute inset-0 flex items-center justify-center">
+          <div className="relative lg:w-[26.25rem] lg:h-[19.5rem] md:w-[13.75rem] md:h-[10.125rem] w-[19.4375rem] h-[9.625rem]">
+            <div className="absolute inset-0">
               <picture className="w-full h-full">
                 <source media="(min-width: 1024px)" srcSet="/assets/images/home/order-left.png" />
                 <source media="(min-width: 768px)" srcSet="/assets/images/home/md-order-left.png" />
@@ -44,8 +44,8 @@ const OrderInfo = () => {
           </div>
 
           {/* Bulk Order Card */}
-          <div className="relative backdrop-blur rounded-2xl lg:w-[45.5rem] lg:h-[19.5rem] md:w-[23.5rem] md:h-[10.125rem] w-[19.4375rem] h-[12rem] overflow-hidden">
-            <div className="absolute inset-0 flex items-center justify-center">
+          <div className="relative lg:w-[45.5rem] lg:h-[19.5rem] md:w-[23.5rem] md:h-[10.125rem] w-[19.4375rem] h-[12rem]">
+            <div className="absolute inset-0">
               <picture className="w-full h-full">
                 <source media="(min-width: 1024px)" srcSet="/assets/images/home/order-right.png" />
                 <source media="(min-width: 768px)" srcSet="/assets/images/home/md-order-right.png" />
@@ -53,7 +53,7 @@ const OrderInfo = () => {
                   src="/assets/images/home/xs-order-right.png"
                   alt="Sample"
                   fill
-                  className="object-contain rounded-2xl"
+                  className="object-contain "
                   sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 100vw"
                   style={{ objectPosition: "center" }}
                 />
