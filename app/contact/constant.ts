@@ -52,4 +52,46 @@ const AccordionList = [
   }
 ]
 
-export { AccordionList }
+const scaleList = [
+  {
+    key: "start-up",
+    label: "Start-up"
+  },
+  {
+    key: "sacle-up",
+    label: "Scale-up"
+  }
+]
+
+const platformList = [
+  {
+    key: "Tiktok",
+    label: "Tiktok"
+  },
+  {
+    key: "Instagram",
+    label: "Instagram"
+  },
+  {
+    key: "Shopify",
+    label: "Shopify"
+  },
+  {
+    key: "Amazon",
+    label: "Amazon"
+  },
+  {
+    key: "eBay",
+    label: "eBay"
+  },
+  {
+    key: "Etsy",
+    label: "Etsy"
+  },
+  {
+    key: "Other",
+    label: "Other"
+  }
+]
+
+export { AccordionList, scaleList, platformList }
