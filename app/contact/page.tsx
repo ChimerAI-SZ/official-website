@@ -1,5 +1,7 @@
 "use client"
 
+import { useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import styled from "@emotion/styled"
 
 import ContactInfo from "./components/ContactInfo"
@@ -7,6 +9,17 @@ import ContactForm from "./components/ContactForm"
 import FQA from "./components/FQA"
 
 const ContactPage = () => {
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    if (searchParams.has("fqa")) {
+      const fqaElement = document.getElementById("fqa-container")
+      if (fqaElement) {
+        fqaElement.scrollIntoView({ behavior: "smooth" })
+      }
+    }
+  }, [searchParams])
+
   return (
     <ContactContainer>
       <ContentWrapper>

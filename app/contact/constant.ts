@@ -20,7 +20,7 @@ const AccordionList = [
     key: 4,
     title: "What is the production process?",
     content: "View our supply chain →",
-    isLink: true
+    link: "/services?tab=supply-chain"
   },
   {
     key: 5,

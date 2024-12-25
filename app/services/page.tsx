@@ -3,6 +3,7 @@
 import { useState } from "react"
 import styled from "@emotion/styled"
 import Image from "next/image"
+import { useSearchParams } from "next/navigation"
 
 import ImageGrid from "./components/ImageGrid"
 import SupplyChain from "./components/SupplyChain"
@@ -10,7 +11,10 @@ import SupplyChain from "./components/SupplyChain"
 import { messageList, navList, trendList, designList } from "./constant"
 
 const ServicesPage = () => {
-  const [selectedNav, setSelectedNav] = useState("Trend")
+  const searchParams = useSearchParams()
+  const tab = searchParams.get("tab")
+
+  const [selectedNav, setSelectedNav] = useState(tab === "supply-chain" ? "Supply Chain" : "Trend")
 
   return (
     <Container>

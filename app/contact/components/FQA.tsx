@@ -1,12 +1,13 @@
 import styled from "@emotion/styled"
 import Image from "next/image"
+import Link from "next/link"
 
 import { Accordion, AccordionItem } from "@nextui-org/accordion"
 import { AccordionList } from "../constant"
 
 const FQA = () => {
   return (
-    <Container className="contact-fqa-container">
+    <Container className="contact-fqa-container" id="fqa-container">
       <Title>Frequently asked questions</Title>
       <StyledAccordion variant="splitted">
         {AccordionList.map(item => (
@@ -35,9 +36,11 @@ const FQA = () => {
                   ))}
                 </AccordionContent>
               ))
-            ) : item.isLink ? (
+            ) : item.link ? (
               <AccordionContent>
-                <ContentLink>{item.content}</ContentLink>
+                <ContentLink>
+                  <Link href={item.link}>{item.content}</Link>
+                </ContentLink>
               </AccordionContent>
             ) : (
               <AccordionContent>{item.content}</AccordionContent>
@@ -84,6 +87,10 @@ const AccordionContent = styled.div`
 const StyledAccordion = styled(Accordion)`
   width: 75%;
   margin: 0 auto 88px;
+
+  @media (min-width: 1200px) {
+    margin-bottom: 15vh;
+  }
 
   & > div {
     box-shadow: unset;

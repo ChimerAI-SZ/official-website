@@ -18,9 +18,9 @@ const Nav = () => {
       <Section $isMobile={isMobileOnly}>
         <h3>Link</h3>
         <nav>
-          <Link href="/privacy">Privacy Policy</Link>
-          <Link href="/terms">Term & Conditions</Link>
-          <Link href="/faqs">FAQs</Link>
+          {/* <Link href="/privacy">Privacy Policy</Link>
+          <Link href="/terms">Term & Conditions</Link> */}
+          <Link href="/contact?fqa=true">FAQs</Link>
         </nav>
       </Section>
     </NavWrapper>
