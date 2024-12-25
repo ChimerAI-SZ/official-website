@@ -31,7 +31,7 @@ import OrderInfo from "@components/OrderInfo"
 
 export default function Home() {
   return (
-    <main className="pt-[70px] ">
+    <main className="pt-[70px]">
       <ShowcaseCarousel />
       {/* <ShowcaseCarousel />
       <ShowcaseCarousel /> */}
