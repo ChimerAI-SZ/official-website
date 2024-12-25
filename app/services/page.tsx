@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, Suspense } from "react"
 import styled from "@emotion/styled"
 import Image from "next/image"
 import { useSearchParams } from "next/navigation"
@@ -10,7 +10,7 @@ import SupplyChain from "./components/SupplyChain"
 
 import { messageList, navList, trendList, designList } from "./constant"
 
-const ServicesPage = () => {
+const ServicesContent = () => {
   const searchParams = useSearchParams()
   const tab = searchParams.get("tab")
 
@@ -56,6 +56,15 @@ const ServicesPage = () => {
     </Container>
   )
 }
+
+const ServicesPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ServicesContent />
+    </Suspense>
+  )
+}
+
 const Container = styled.div`
   background-color: #faf9fb;
 
