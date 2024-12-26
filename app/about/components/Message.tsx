@@ -1,12 +1,25 @@
+"use client"
+
+import { useState, useEffect } from "react"
 import styled from "@emotion/styled"
 import Image from "next/image"
 
 import { isTablet, isMobileOnly, isBrowser } from "react-device-detect"
 
 const Message = () => {
+  console.log(isTablet, isMobileOnly, isBrowser)
+
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return <div></div>
+
   return (
-    <AboutContainer $isMobileOnly={isMobileOnly}>
-      <MessageBox $isTablet={isTablet} $isBrowser={isBrowser}>
+    <AboutContainer>
+      <MessageBox>
         <div>
           <MessageContent>
             <Image
@@ -21,7 +34,7 @@ const Message = () => {
               flexibility, and scalability you need
             </p>
           </MessageContent>
-          <Signature $isMobileOnly={isMobileOnly} $isTablet={isTablet}>
+          <Signature>
             —— Team <span>CREAMODA</span>
           </Signature>
         </div>
@@ -30,22 +43,40 @@ const Message = () => {
   )
 }
 
-const AboutContainer = styled.div<{ $isMobileOnly: boolean }>`
+const AboutContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
 
-  height: ${({ $isMobileOnly }) => ($isMobileOnly ? "unset" : "100vh")};
+  height: 100vh;
+
+  @media (max-width: 767px) {
+    height: unset;
+    margin: 100px auto;
+  }
 
   position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 `
-const MessageBox = styled.div<{ $isTablet: boolean; $isBrowser: boolean }>`
-  max-width: ${({ $isBrowser }) => ($isBrowser ? "1200px" : "70vw")};
-  max-height: ${({ $isBrowser }) => ($isBrowser ? "328px" : "unset")};
+const MessageBox = styled.div`
   border-radius: 20px;
   background: #fff;
+
+  @media (min-width: 1024px) {
+    max-width: 1200px;
+    max-height: 328px;
+  }
+
+  @media (max-width: 1024px) and (min-width: 768px) {
+    width: calc(100% - 50px);
+    margin-top: 72px;
+  }
+
+  @media (max-width: 767px) {
+    width: calc(100% - 2rem);
+    margin-top: 40px;
+  }
 
   position: relative;
   background: white;
@@ -54,7 +85,7 @@ const MessageBox = styled.div<{ $isTablet: boolean; $isBrowser: boolean }>`
   margin: 0 auto;
 
   & > div {
-    padding: ${({ $isTablet, $isBrowser }) => ($isBrowser ? "64px" : $isTablet ? "48px" : "1rem")};
+    padding: ${isBrowser ? "64px" : isTablet ? "48px" : "1rem"};
     background: #fff;
     border-radius: 16px;
   }
@@ -93,17 +124,17 @@ const MessageContent = styled.div`
   }
 `
 
-const Signature = styled.div<{ $isMobileOnly: boolean; $isTablet: boolean }>`
+const Signature = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
 
-  margin-top: ${({ $isMobileOnly }) => ($isMobileOnly ? "18px" : "40px")};
+  margin-top: ${isMobileOnly ? "18px" : "40px"};
   color: #000;
 
   text-align: right;
   font-family: Inter;
-  font-size: ${({ $isMobileOnly, $isTablet }) => ($isMobileOnly ? "12px" : $isTablet ? "20px" : "24px")};
+  font-size: ${isMobileOnly ? "12px" : isTablet ? "20px" : "24px"};
   font-style: normal;
   font-weight: 400;
   line-height: 34px;
@@ -115,7 +146,7 @@ const Signature = styled.div<{ $isMobileOnly: boolean; $isTablet: boolean }>`
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: Inter;
-    font-size: 24px;
+    font-size: ${isMobileOnly ? "12px" : isTablet ? "20px" : "24px"};
     font-style: normal;
     font-weight: 700;
     line-height: 34px;

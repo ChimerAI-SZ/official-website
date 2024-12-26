@@ -2,16 +2,6 @@ import styled from "@emotion/styled"
 import Image from "next/image"
 import { isTablet, isMobileOnly, isBrowser } from "react-device-detect"
 
-// 提取共用类型
-type DeviceProps = {
-  $isTablet: boolean
-  $isMobileOnly: boolean
-}
-
-type TextContainerProps = DeviceProps & {
-  $isBrowser: boolean
-}
-
 // 提取常量
 const DIMENSIONS = {
   LOGO: {
@@ -31,14 +21,14 @@ const Main = () => {
   const logoWidth = isTablet ? DIMENSIONS.LOGO.TABLET : isMobileOnly ? DIMENSIONS.LOGO.MOBILE : DIMENSIONS.LOGO.DESKTOP
 
   return (
-    <AboutContainer $isTablet={isTablet} $isMobileOnly={isMobileOnly}>
-      <TextContainer $isTablet={isTablet} $isBrowser={isBrowser} $isMobileOnly={isMobileOnly}>
+    <AboutContainer>
+      <TextContainer>
         <Title>
           <Image src="/assets/images/logo-black.png" alt="logo" width={logoWidth} height={DIMENSIONS.LOGO.HEIGHT} />
-          <Text $isTablet={isTablet} $isMobileOnly={isMobileOnly}>
+          <Text>
             {"is reshaping fashion with Al-powered design, crafting garments that embody your brand's identity."}
           </Text>
-          <Text $isTablet={isTablet} $isMobileOnly={isMobileOnly}>
+          <Text>
             {
               "Leveraging advanced technology and the world's largest manufacturing network, we turn your vision into high-quality, on-demand reality, and sales-driven production."
             }
@@ -50,35 +40,46 @@ const Main = () => {
         alt="about"
         width={DIMENSIONS.ABOUT_IMAGE.WIDTH}
         height={DIMENSIONS.ABOUT_IMAGE.HEIGHT}
-        $isTablet={isTablet}
-        $isMobileOnly={isMobileOnly}
       />
     </AboutContainer>
   )
 }
 
-const AboutContainer = styled.div<DeviceProps>`
+const AboutContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  height: 100vh;
   padding-top: 72px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 
-  ${({ $isTablet, $isMobileOnly }) => ($isTablet || $isMobileOnly) && "flex-direction: column;"}
+  @media (min-width: 780px) {
+    height: 100vh;
+  }
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
 `
 
-const TextContainer = styled.div<TextContainerProps>`
+const TextContainer = styled.div`
   font-size: 16px;
   color: #000;
 
-  ${({ $isBrowser }) => $isBrowser && `width: calc(100% - ${DIMENSIONS.ABOUT_IMAGE.WIDTH}px - 80px);`}
+  @media (min-width: 1024px) {
+    width: calc(100% - ${DIMENSIONS.ABOUT_IMAGE.WIDTH}px - 80px);
+  }
 
-  ${({ $isTablet }) => $isTablet && "width: 70vw; margin-top: 72px;"}
-    
-  ${({ $isMobileOnly }) => $isMobileOnly && "width: 80vw; margin-top: 40px;"}
+  @media (max-width: 1024px) and (min-width: 768px) {
+    width: 70vw;
+    margin-top: 72px;
+  }
+
+  @media (max-width: 767px) {
+    width: 80vw;
+    margin-top: 40px;
+  }
 `
 const Title = styled.div`
   font-size: 24px;
@@ -87,22 +88,24 @@ const Title = styled.div`
     margin-bottom: 24px;
   }
 `
-const Text = styled.p<{ $isTablet: boolean; $isMobileOnly: boolean }>`
+const Text = styled.p`
   color: #000;
 
   font-family: Inter;
-  font-size: ${({ $isTablet, $isMobileOnly }) => ($isTablet ? "20px" : $isMobileOnly ? "16px" : "24px")};
+  font-size: ${isTablet ? "20px" : isMobileOnly ? "16px" : "24px"};
   font-style: normal;
   font-weight: 400;
-  line-height: ${({ $isTablet, $isMobileOnly }) => ($isTablet ? "28px" : $isMobileOnly ? "20px" : "32px")};
+  line-height: ${isTablet ? "28px" : isMobileOnly ? "20px" : "32px"};
 `
-const StyledImage = styled(Image)<{ $isTablet: boolean; $isMobileOnly: boolean }>`
+const StyledImage = styled(Image)`
   position: absolute;
   right: 0;
-  ${({ $isTablet, $isMobileOnly }) =>
-    ($isTablet || $isMobileOnly) &&
-    ` position: relative;
-      margin-top:88px;`}
+
+  @media (max-width: 780px) {
+    position: relative;
+    margin: 88px 32px 32px;
+    width: calc(100% - 64px);
+  }
 `
 
 export default Main
