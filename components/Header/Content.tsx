@@ -8,7 +8,7 @@ import styles from "./Header.module.css"
 import clsx from "clsx"
 import { isTablet, isBrowser } from "react-device-detect"
 
-const Header = () => {
+export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
   const isHome = pathname === "/"
@@ -92,5 +92,3 @@ const Header = () => {
     </header>
   )
 }
-
-export default Header
