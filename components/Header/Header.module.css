@@ -4,7 +4,7 @@
   height: 72px;
   backdrop-filter: blur(8px);
   z-index: 50;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .header_home {
@@ -13,6 +13,14 @@
 
 .header_default {
   background: #faf9fb;
+}
+
+.header_scrolled.header_home {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.header_scrolled.header_default {
+  background: rgba(250, 249, 251, 0.7);
 }
 
 .container {

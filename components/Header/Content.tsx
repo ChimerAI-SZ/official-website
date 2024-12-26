@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { usePathname } from "next/navigation"
 import Image from "next/image"
 import styles from "./Header.module.css"
@@ -10,8 +10,19 @@ import { isTablet, isBrowser } from "react-device-detect"
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
   const isHome = pathname === "/"
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY
+      setIsScrolled(scrollPosition > 72)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const menuItems = [
     { label: "Home", href: "/" },
@@ -21,7 +32,13 @@ export const Header = () => {
   ]
 
   return (
-    <header className={clsx(styles.header, isHome ? styles.header_home : styles.header_default)}>
+    <header
+      className={clsx(
+        styles.header,
+        isHome ? styles.header_home : styles.header_default,
+        isScrolled && styles.header_scrolled
+      )}
+    >
       <div className={styles.container}>
         <div className={styles.nav}>
           <Link href="/" className={clsx(styles.logo, isHome ? styles.logo_home : styles.logo_default)}>
