@@ -40,14 +40,14 @@ const Trend: React.FC<TrendProps> = ({ list, keyword }) => {
             alt="trend 1"
             width={100}
             height={100}
-            style={{ top: "200px", left: "-100px" }}
+            style={{ top: "25%", left: "-100px" }}
           />
           <RibbonComponent
             src="/assets/images/services/ribbon_2.svg"
             alt="trend 2"
             width={150}
             height={150}
-            style={{ top: "350px", right: "-50px" }}
+            style={{ top: "50%", right: "-80px" }}
           />
         </>
       )
@@ -61,14 +61,14 @@ const Trend: React.FC<TrendProps> = ({ list, keyword }) => {
             alt="trend 3"
             width={200}
             height={200}
-            style={{ top: "350px", left: "-200px" }}
+            style={{ top: "50%", left: "-200px" }}
           />
           <RibbonComponent
             src="/assets/images/services/ribbon_4.svg"
             alt="trend 4"
-            width={400}
-            height={400}
-            style={{ top: "350px", right: "-367px" }}
+            width={450}
+            height={450}
+            style={{ top: "40%", right: "-415px" }}
           />
         </>
       )

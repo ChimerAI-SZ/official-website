@@ -27,10 +27,12 @@ const ScrollHandler = () => {
 const ContactPage = () => {
   return (
     <ContactContainer>
-      <ContentWrapper>
-        <ContactInfo />
-        <ContactForm />
-      </ContentWrapper>
+      <Main>
+        <ContentWrapper>
+          <ContactInfo />
+          <ContactForm />
+        </ContentWrapper>
+      </Main>
       <FQA />
       <Suspense fallback={null}>
         <ScrollHandler />
@@ -44,18 +46,18 @@ const ContactContainer = styled.div`
   margin: 0 auto;
   padding-top: 72px;
 `
+const Main = styled.div``
 
 const ContentWrapper = styled.div`
   display: flex;
   gap: 48px;
   height: 100vh;
+  flex-direction: column;
 
   @media (min-width: 1200px) {
-    align-items: center;
-  }
-
-  @media (max-width: 768px) {
-    flex-direction: column;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 20vh;
   }
 `
 

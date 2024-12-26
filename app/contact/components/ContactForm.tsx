@@ -59,7 +59,7 @@ const ContactForm = () => {
   }
 
   return (
-    <>
+    <FormContainer>
       <Form
         className="w-full min-w-[640px] max-w-xs flex flex-col gap-4 flex-grow"
         validationBehavior="native"
@@ -192,9 +192,13 @@ const ContactForm = () => {
           )}
         </ModalContent>
       </Modal>
-    </>
+    </FormContainer>
   )
 }
+
+const FormContainer = styled.div`
+  // --nextui-radius-medium: 8px;
+`
 
 const InputGroup = styled.div`
   width: 100%;
