@@ -11,21 +11,21 @@ const ProductShowcase = () => {
           src="/assets/images/home/phone-bg.png"
           alt="Background Pattern"
           fill
-          className="hidden md:block object-cover opacity-30"
+          className="hidden md:block object-cover opacity-100"
           priority
         />
         <Image
           src="/assets/images/home/xs-phone-bg.png"
           alt="Background Pattern"
           fill
-          className="md:hidden block object-cover opacity-30"
+          className="md:hidden block object-cover opacity-100"
           priority
         />
         <Image
           src="/assets/images/home/phone-bg-b.png"
           alt="Bottom Background Pattern"
           fill
-          className="object-cover"
+          className="object-cover opacity-90"
           priority
         />
       </div>
@@ -50,7 +50,7 @@ const ProductShowcase = () => {
         </div>
 
         {/* 中心手机展示 */}
-        <div className="relative lg:w-[15rem] lg:h-[32.48rem] md:w-[7.5rem] md:h-[16.24rem] w-[14.375rem] h-[31.12669rem] mx-auto mb-8">
+        <div className="relative lg:w-[15rem] lg:h-[32.48rem] md:w-[7.5rem] md:h-[16.24rem] w-[14.375rem] h-[31.12669rem] mx-auto mb-16">
           <div className="relative z-10 w-full h-full">
             <Image
               src="/assets/images/home/phone-mockup.png"
@@ -60,9 +60,6 @@ const ProductShowcase = () => {
               priority
             />
           </div>
-
-          {/* 发光效果 */}
-          <div className="absolute -inset-4 bg-gradient-to-r from-[#2B8FFF]/20 via-[#C233FF]/20 to-[#FF8B34]/20 blur-xl -z-10" />
         </div>
 
         {/* 渐变按钮 */}

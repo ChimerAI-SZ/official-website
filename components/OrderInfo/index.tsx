@@ -24,7 +24,7 @@ const OrderInfo = () => {
           MOQ 100Pcs/style/color (4 sizes)
         </p>
 
-        <div className="flex flex-col lg:flex-row md:flex-row xs:flex-col gap-5 items-center justify-center">
+        <div className="flex flex-col lg:flex-row md:flex-row xs:flex-col gap-5 items-center ">
           {/* Sample Card */}
           <div className="relative lg:w-[26.25rem] lg:h-[19.5rem] md:w-[13.75rem] md:h-[10.125rem] w-[19.4375rem] h-[9.625rem]">
             <div className="absolute inset-0">

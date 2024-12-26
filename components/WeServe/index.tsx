@@ -41,7 +41,10 @@ const WeServe = () => {
 
         {/* Tabs */}
         <div className="flex justify-center mb-12">
-          <div className="bg-white/20 rounded-full p-0.5 sm:p-1.5 flex gap-0.5 sm:gap-1.5">
+          <div
+            className="bg-white/20 rounded-full p-0.5 sm:p-1.5 flex gap-0.5 sm:gap-1.5"
+            style={{ border: "1.5px solid rgba(255, 255, 255, 0.48)" }}
+          >
             {tabs.map(tab => (
               <button
                 key={tab}
