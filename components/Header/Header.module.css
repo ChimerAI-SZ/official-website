@@ -1,3 +1,12 @@
+@supports (font-variation-settings: normal) {
+  @font-face {
+    font-family: "Your Font Name";
+    src: url("/path/to/your/font.woff2") format("woff2-variations");
+    font-weight: 100 900;
+    font-display: swap;
+  }
+}
+
 .header {
   position: fixed;
   width: 100%;
@@ -77,6 +86,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 90px;
+  text-align: center;
 }
 
 .menuItem_home {
@@ -88,8 +99,8 @@
 }
 
 .menuItem_active {
-  font-variation-settings: "wght" 700;
   font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .menuItem_active::after {
