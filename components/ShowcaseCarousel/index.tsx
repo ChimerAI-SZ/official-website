@@ -20,9 +20,9 @@ const ShowcaseCarousel = () => {
   }))
 
   // 每组复制4次以确保无缝滚动
-  const repeatedGroup1 = [...group1, ...group1, ...group1, ...group1]
-  const repeatedGroup2 = [...group2, ...group2, ...group2, ...group2]
-  const repeatedGroup3 = [...group3, ...group3, ...group3, ...group3]
+  const repeatedGroup1 = [...group1, ...group1, ...group1, ...group1, ...group1]
+  const repeatedGroup2 = [...group2, ...group2, ...group2, ...group2, ...group2]
+  const repeatedGroup3 = [...group3, ...group3, ...group3, ...group3, ...group3]
 
   return (
     <section className="w-full relative bg-gradient-to-r from-[#000B1F] via-[#321B47] to-[#321B47] py-8 md:py-12 overflow-hidden">
