@@ -4,8 +4,8 @@ import { isTablet, isMobileOnly } from "react-device-detect"
 
 const Nav = () => {
   return (
-    <NavWrapper $isMobile={isMobileOnly} $isTablet={isTablet}>
-      <Section $isMobile={isMobileOnly}>
+    <NavWrapper>
+      <Section>
         <h3>Explore</h3>
         <nav>
           <Link href="/">Home</Link>
@@ -15,7 +15,7 @@ const Nav = () => {
         </nav>
       </Section>
 
-      <Section $isMobile={isMobileOnly}>
+      <Section>
         <h3>Link</h3>
         <nav>
           {/* <Link href="/privacy">Privacy Policy</Link>
@@ -28,43 +28,49 @@ const Nav = () => {
 }
 
 // 导航包装器
-const NavWrapper = styled.div<{ $isMobile: boolean; $isTablet: boolean }>`
-  display: grid;
-  grid-template-columns: ${({ $isMobile }) => ($isMobile ? "1fr" : "repeat(2, 1fr)")};
-  gap: ${({ $isMobile }) => ($isMobile ? "32px" : "93px")};
-  grid-column: ${({ $isMobile, $isTablet }) => ($isMobile ? "1" : $isTablet ? "1 / span 2" : "3 / span 1")};
+const NavWrapper = styled.div`
+  display: flex;
+  gap: 80px;
+
+  @media (max-width: 1024px) {
+    gap: 40px;
+  }
+
+  @media (max-width: 768px) {
+    gap: 32px;
+    width: 100%;
+    justify-content: flex-start;
+  }
 `
 
 // 各个区块的通用样式
-const Section = styled.div<{ $isMobile: boolean }>`
-  width: 168px;
+const Section = styled.div`
   h3 {
-    color: rgba(255, 255, 255, 0.5);
-
-    font-family: Inter;
-    font-size: ${({ $isMobile }) => ($isMobile ? "12px" : "16px")};
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px; /* 150% */
-    margin-bottom: ${({ $isMobile }) => ($isMobile ? "8px" : "24px")};
+    color: #ebebeb;
+    font-family: Manrope;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    margin-bottom: 16px;
   }
 
   nav {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
 
   a {
-    color: var(--Neutral-White, #fff);
-    font-family: Inter;
-    font-size: ${({ $isMobile }) => ($isMobile ? "12px" : "16px")};
-    font-style: normal;
+    color: #ebebeb;
+    font-family: Manrope;
+    font-size: 14px;
     font-weight: 400;
-    line-height: 24px; /* 150% */
+    line-height: 22px;
+    text-decoration: none;
+    text-align: left;
 
     &:hover {
-      color: #000;
+      text-decoration: underline;
     }
   }
 `
