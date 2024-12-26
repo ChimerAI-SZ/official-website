@@ -21,7 +21,7 @@
 }
 @media (min-width: 768px) {
   .header_home:hover {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.48);
   }
 }
 
@@ -30,11 +30,11 @@
 }
 
 .header_scrolled.header_home {
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.48);
 }
 
 .header_scrolled.header_default {
-  background: rgba(250, 249, 251, 0.7);
+  background: rgba(250, 249, 251, 0.48);
 }
 
 .container {

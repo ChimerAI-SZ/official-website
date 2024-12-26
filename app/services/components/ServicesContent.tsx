@@ -155,6 +155,15 @@ const NavItem = styled.div<{ $active: boolean; $width: number }>`
   font-size: 16px;
   line-height: 26px;
 
+  ${props =>
+    props.$active &&
+    `
+    background: var(--gradient-heavy);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    `}
+
   &:not(:last-child) {
     margin-right: 6px;
   }

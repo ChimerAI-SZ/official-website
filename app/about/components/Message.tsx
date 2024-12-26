@@ -8,7 +8,7 @@ const Message = () => {
     <AboutContainer $isMobileOnly={isMobileOnly}>
       <MessageBox $isTablet={isTablet} $isBrowser={isBrowser}>
         <div>
-          <MessageContent $isTablet={isTablet} $isBrowser={isBrowser}>
+          <MessageContent>
             <Image
               src="/assets/images/about/quotationMark.png"
               alt="quotationMark"
@@ -73,7 +73,7 @@ const MessageBox = styled.div<{ $isTablet: boolean; $isBrowser: boolean }>`
   }
 `
 
-const MessageContent = styled.div<{ $isTablet: boolean; $isBrowser: boolean }>`
+const MessageContent = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -81,24 +81,15 @@ const MessageContent = styled.div<{ $isTablet: boolean; $isBrowser: boolean }>`
   color: #000;
 
   font-family: Inter;
-  font-size: ${({ $isTablet }) => ($isTablet ? "20px" : "24px")};
+  font-size: ${isMobileOnly ? "12px" : "20px"};
   font-style: normal;
   font-weight: 400;
-  line-height: ${({ $isTablet }) => ($isTablet ? "28px" : "34px")};
-
-  & > p {
-    color: #000;
-
-    font-family: Inter;
-    font-size: ${({ $isTablet, $isBrowser }) => ($isBrowser ? "24px" : $isTablet ? "20px" : "12px")};
-    font-style: normal;
-    font-weight: 400;
-  }
+  line-height: ${isBrowser ? "34px" : isTablet ? "28px" : "19px"};
 
   & > img {
     margin-right: 8px;
     position: relative;
-    top: ${({ $isTablet, $isBrowser }) => ($isBrowser || $isTablet ? "-12px" : "-6px")};
+    top: ${isBrowser || isTablet ? "-12px" : "-6px"};
   }
 `
 

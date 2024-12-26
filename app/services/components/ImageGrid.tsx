@@ -287,7 +287,7 @@ const TrendTitle = styled.span`
     white-space: nowrap;
 
     & > div {
-      background: var(--gradient-primary);
+      background: var(--gradient-heavy);
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
