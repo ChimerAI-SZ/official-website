@@ -25,7 +25,7 @@ const ShowcaseCarousel = () => {
   const repeatedGroup3 = [...group3, ...group3, ...group3, ...group3, ...group3]
 
   return (
-    <section className="w-full relative bg-gradient-to-r from-[#000B1F] via-[#321B47] to-[#321B47] py-8 md:py-12 overflow-hidden">
+    <section className="w-full relative bg-gradient-to-r from-[#000B1F] via-[#321B47] to-[#321B47] py-[calc(72px+1rem)] md:pt-[calc(72px+3rem)] overflow-hidden">
       <div className="absolute inset-0 w-full h-full" style={{ background: "#010509" }}>
         <Image src="/assets/images/home/showcase-bg.png" alt="Background" fill />
       </div>
