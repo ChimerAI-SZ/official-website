@@ -1,8 +1,11 @@
 "use client"
 
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 const ProductShowcase = () => {
+  const router = useRouter()
+
   return (
     <section className="relative w-full py-16 md:py-24 bg-gradient-to-b from-[#000B1F] to-[#021033]">
       {/* 背景图片 */}
@@ -64,12 +67,13 @@ const ProductShowcase = () => {
 
         {/* 渐变按钮 */}
         <button
+          onClick={() => router.push("/contact")}
           className="flex gap-[0.88rem] items-center justify-center lg:w-[19.375rem] lg:h-16 rounded-[2.5rem] md:w-[10.5rem] md:h-[2.25rem] w-[10.5rem] h-[2.25rem] mx-auto hover:opacity-90 transition-opacity"
           style={{
             background: "linear-gradient(95deg, #008FF7 -1.08%, #A090F9 37.36%, #EF6CBC 81.61%, #FEA324 104%)"
           }}
         >
-          <span className="font-inter text-white font-extrabold lg:text-[2rem] text-[1rem]">Get Started</span>
+          <span className="font-inter text-white font-extrabold lg:text-[2rem] text-[1rem]">Get in Touch</span>
           <Image
             src="/assets/images/home/arrow-right.svg"
             alt="Arrow Right"
