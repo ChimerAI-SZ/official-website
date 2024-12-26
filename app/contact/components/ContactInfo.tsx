@@ -19,6 +19,10 @@ const ContactInfo = () => {
 
 const InfoContainer = styled.div`
   flex: 1;
+
+  @media (max-width: 780px) {
+    flex-grow: 0;
+  }
 `
 
 const Title = styled.h1`
@@ -31,6 +35,11 @@ const Title = styled.h1`
   line-height: normal;
 
   margin-bottom: 12px;
+
+  @media (max-width: 780px) {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
 `
 
 const SubTitle = styled.h2`
@@ -43,6 +52,11 @@ const SubTitle = styled.h2`
   line-height: normal;
 
   margin-bottom: 16px;
+
+  @media (max-width: 780px) {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
 `
 
 const EmailText = styled.p`
@@ -52,6 +66,10 @@ const EmailText = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+
+  @media (max-width: 780px) {
+    font-size: 12px;
+  }
 `
 
 const EmailLink = styled.a`
@@ -67,6 +85,11 @@ const EmailLink = styled.a`
   text-decoration-thickness: auto;
   text-underline-offset: auto;
   text-underline-position: from-font;
+
+  @media (max-width: 780px) {
+    font-size: 12px;
+  }
+  }
 `
 
 export default ContactInfo

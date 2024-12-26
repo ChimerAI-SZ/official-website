@@ -45,13 +45,21 @@ const ContactContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding-top: 72px;
+
+  @media (max-width: 780px) {
+    max-width: 100%;
+  }
 `
-const Main = styled.div``
+const Main = styled.div`
+  @media (max-width: 780px) {
+    padding: 60px 32px;
+  }
+`
 
 const ContentWrapper = styled.div`
   display: flex;
   gap: 48px;
-  height: 100vh;
+  height: calc(100vh - 132px);
   flex-direction: column;
 
   @media (min-width: 1200px) {
