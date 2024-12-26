@@ -24,7 +24,7 @@ const VisionMission = () => {
               src="/assets/images/home/xs-vision.png"
               alt="Vision"
               fill
-              className="block md:hidden object-cover"
+              className="block md:hidden object-contain"
               sizes="100vw"
               priority
             />
@@ -43,7 +43,7 @@ const VisionMission = () => {
               src="/assets/images/home/xs-mission.png"
               alt="Mission"
               fill
-              className="block md:hidden object-cover"
+              className="block md:hidden object-contain"
               sizes="100vw"
               priority
             />

@@ -66,8 +66,10 @@ module.exports = {
         xs: "320px"
       },
       animation: {
-        'scroll-left': 'scroll-left 130s linear infinite',
-        'scroll-right': 'scroll-right 120s linear infinite',
+        'scroll-left': 'scroll-left 20s linear infinite',
+        'scroll-right': 'scroll-right 20s linear infinite',
+        'scroll-left-desktop': 'scroll-left 130s linear infinite',
+        'scroll-right-desktop': 'scroll-right 120s linear infinite',
       },
       keyframes: {
         'scroll-left': {

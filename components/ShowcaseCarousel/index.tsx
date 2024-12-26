@@ -33,7 +33,7 @@ const ShowcaseCarousel = () => {
       <div className="relative z-10 space-y-4 md:space-y-6">
         {/* 第一行 - 文件夹1的图片 */}
         <div className="overflow-hidden">
-          <div className="flex animate-scroll-right hover:pause">
+          <div className="flex animate-scroll-right md:animate-scroll-right-desktop hover:pause">
             {repeatedGroup1.map((item, index) => (
               <div
                 key={`top-${index}`}
@@ -56,7 +56,7 @@ const ShowcaseCarousel = () => {
 
         {/* 第二行 - 文件夹2的图片 */}
         <div className="overflow-hidden">
-          <div className="flex animate-scroll-left hover:pause">
+          <div className="flex animate-scroll-left md:animate-scroll-left-desktop hover:pause">
             {repeatedGroup2.map((item, index) => (
               <div
                 key={`middle-${index}`}
@@ -79,7 +79,7 @@ const ShowcaseCarousel = () => {
 
         {/* 第三行 - 文件夹3的图片 */}
         <div className="overflow-hidden">
-          <div className="flex animate-scroll-right hover:pause">
+          <div className="flex animate-scroll-right md:animate-scroll-right-desktop hover:pause">
             {repeatedGroup3.map((item, index) => (
               <div
                 key={`bottom-${index}`}
