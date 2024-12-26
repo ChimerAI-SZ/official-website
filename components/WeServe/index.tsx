@@ -37,10 +37,10 @@ const WeServe = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <h2 className="text-2xl sm:text-3xl lg:text-5xl text-white text-center font-inter font-bold mb-12">We serve</h2>
+        <h2 className="text-2xl sm:text-3xl lg:text-5xl text-white text-center font-inter font-bold mb-6">We serve</h2>
 
         {/* Tabs */}
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center mb-8">
           <div
             className="bg-white/20 rounded-full p-0.5 sm:p-1.5 flex gap-0.5 sm:gap-1.5"
             style={{ border: "1.5px solid rgba(255, 255, 255, 0.48)" }}
@@ -60,7 +60,7 @@ const WeServe = () => {
                   whitespace-nowrap
                   ${
                     activeTab === tab
-                      ? "bg-gradient-to-r from-[#2B8FFF] to-[#D233FF] text-white"
+                      ? "bg-gradient-to-r from-[#008FF7] via-[#A090F9] via-[#EF6CBC] to-[#FEA324] text-white"
                       : "text-white/60 hover:text-white"
                   }
                 `}
