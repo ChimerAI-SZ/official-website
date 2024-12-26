@@ -5,8 +5,8 @@ import { isTablet, isMobileOnly, isBrowser } from "react-device-detect"
 // 提取常量
 const DIMENSIONS = {
   LOGO: {
-    DESKTOP: 415,
-    TABLET: 300,
+    DESKTOP: 240,
+    TABLET: 205,
     MOBILE: 150,
     HEIGHT: 60
   },
@@ -35,12 +35,42 @@ const Main = () => {
           </Text>
         </Title>
       </TextContainer>
-      <StyledImage
-        src="/assets/images/about/about_us.png"
-        alt="about"
-        width={DIMENSIONS.ABOUT_IMAGE.WIDTH}
-        height={DIMENSIONS.ABOUT_IMAGE.HEIGHT}
-      />
+      <StyledImage>
+        {isBrowser && (
+          <>
+            <Image
+              src="/assets/images/about/ribbon_1.svg"
+              alt="about"
+              width={1000}
+              height={800}
+              style={{
+                position: "absolute",
+                top: "305px",
+                left: "-720px",
+                maxWidth: "unset"
+              }}
+            />
+            <Image
+              src="/assets/images/about/ribbon_2.svg"
+              alt="about"
+              width={130}
+              height={130}
+              style={{
+                position: "absolute",
+                top: "-56px",
+                right: "20px",
+                maxWidth: "unset"
+              }}
+            />
+          </>
+        )}
+        <Image
+          src="/assets/images/about/about_us.png"
+          alt="about"
+          width={DIMENSIONS.ABOUT_IMAGE.WIDTH}
+          height={DIMENSIONS.ABOUT_IMAGE.HEIGHT}
+        />
+      </StyledImage>
     </AboutContainer>
   )
 }
@@ -97,7 +127,7 @@ const Text = styled.p`
   font-weight: 400;
   line-height: ${isTablet ? "28px" : isMobileOnly ? "20px" : "32px"};
 `
-const StyledImage = styled(Image)`
+const StyledImage = styled.div`
   position: absolute;
   right: 0;
 

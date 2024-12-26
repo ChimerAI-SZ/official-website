@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="142px" height="64px" viewBox="0 0 142 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>路径</title>
+    <defs>
+        <linearGradient x1="-35.5555556%" y1="46.301667%" x2="58.676912%" y2="20.1563996%" id="linearGradient-1">
+            <stop stop-color="#008FF7" offset="7.10432%"></stop>
+            <stop stop-color="#A090F9" offset="47.8979%"></stop>
+            <stop stop-color="#EF6CBC" offset="75.522%"></stop>
+            <stop stop-color="#FEA324" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-dasharray="6">
+        <path d="M140,63.0002921 C134.17,31.3335921 97,-12.1797079 44.5,6.49979208 C25.8,13.1529921 11.92,33.7762921 0.9,63.0002921" id="路径" stroke="url(#linearGradient-1)" stroke-width="3"></path>
+    </g>
+</svg>
