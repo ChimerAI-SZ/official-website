@@ -14,23 +14,23 @@ const ProductShowcase = () => {
           src="/assets/images/home/phone-bg.png"
           alt="Background Pattern"
           fill
-          className="hidden md:block object-cover opacity-[0.7]"
+          className="hidden md:block object-cover opacity-[1]"
           priority
         />
         <Image
           src="/assets/images/home/xs-phone-bg.png"
           alt="Background Pattern"
           fill
-          className="md:hidden block object-cover opacity-[0.7]"
+          className="md:hidden block object-cover opacity-[1]"
           priority
         />
-        <Image
+        {/* <Image
           src="/assets/images/home/phone-bg-b.png"
           alt="Bottom Background Pattern"
           fill
           className="object-cover opacity-[0.95]"
           priority
-        />
+        /> */}
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
