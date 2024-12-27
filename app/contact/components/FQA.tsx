@@ -53,8 +53,11 @@ const FQA = () => {
 }
 
 const Container = styled.div`
-  margin-top: 20vh;
+  margin-top: 5vh;
 
+  @media (min-width: 780px) {
+    margin-top: 20vh;
+  }
   @media (min-width: 1200px) {
     margin-top: unset;
   }
@@ -71,6 +74,10 @@ const Title = styled.div`
   text-align: center;
 
   margin-bottom: 32px;
+
+  @media (max-width: 780px) {
+    font-size: 18px;
+  }
 `
 
 const AccordionContent = styled.div`
@@ -87,6 +94,12 @@ const AccordionContent = styled.div`
 const StyledAccordion = styled(Accordion)`
   width: 75%;
   margin: 0 auto 88px;
+
+  @media (max-width: 780px) {
+    width: 100%;
+    padding: 0 1rem;
+    margin: 0 0 5vh;
+  }
 
   @media (min-width: 1200px) {
     margin-bottom: 15vh;

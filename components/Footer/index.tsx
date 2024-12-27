@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
 
 const FooterContainer = styled.footer<{ $isHomePage: boolean }>`
   width: 100%;
-  background-color: ${({ $isHomePage }) => ($isHomePage ? "#121212" : "rgba(23, 23, 23, 0.8)")};
+  background-color: rgba(23, 23, 23, 0.8);
   box-sizing: border-box;
   padding: 60px 120px 24px;
 

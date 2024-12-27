@@ -160,7 +160,7 @@ const ScrollContainer = styled.div`
 
   ${isBrowser &&
   `
-    @media screen and (min-height: 800px) {
+    @media screen and (min-height: 1200px) {
       align-items: center;
     }
   `}
@@ -254,7 +254,7 @@ const Card = styled.div<{ $bgImage: string }>`
   z-index: 1;
   width: 310px;
   height: 100%;
-  padding: ${isMobileOnly ? "85px 16px 78px 46px" : "36px 24px 106px 64px"};
+  padding: ${isMobileOnly ? "87px 16px 78px 46px" : "87px 24px 106px 64px"};
 
   background-image: url(${props => props.$bgImage});
   background-size: cover;

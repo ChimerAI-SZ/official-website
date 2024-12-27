@@ -23,6 +23,8 @@ const ContactForm = () => {
   const [platformList, setPlatformList] = useState<{ key: string; label: string }[]>(initPlatformList)
   const [modalVisible, setModalVisible] = useState(false) // 发送成功弹窗是否可见
 
+  const [platform, setPlatform] = useState("")
+
   // 把input的值放到state里，在add的时候会有拿不到的情况，所以直接存到ref里
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -35,6 +37,10 @@ const ContactForm = () => {
         { key: newPlatform, label: newPlatform },
         ...prev.slice(prev.length - 1)
       ])
+
+      setTimeout(() => {
+        setPlatform(newPlatform)
+      }, 100)
 
       // 用完清空
       inputRef.current!.value = ""
@@ -59,9 +65,9 @@ const ContactForm = () => {
   }
 
   return (
-    <>
+    <FormContainer>
       <Form
-        className="w-full min-w-[640px] max-w-xs flex flex-col gap-4 flex-grow"
+        className="w-full max-w-xs flex flex-col gap-4 flex-grow"
         validationBehavior="native"
         onSubmit={handleSubmit}
       >
@@ -120,6 +126,10 @@ const ContactForm = () => {
             variant="bordered"
             items={platformList}
             labelPlacement="outside"
+            selectedKeys={[platform]}
+            onChange={e => {
+              setPlatform(e.target.value)
+            }}
           >
             {platform => (
               <SelectItem
@@ -163,7 +173,7 @@ const ContactForm = () => {
 
         {/* <Checkbox>I agree to the Terms and Conditions.</Checkbox> */}
 
-        <Button color="primary" size="lg" type="submit">
+        <Button color="primary" size="lg" type="submit" className="w-full mt-[38px]">
           Send Message
         </Button>
       </Form>
@@ -192,20 +202,34 @@ const ContactForm = () => {
           )}
         </ModalContent>
       </Modal>
-    </>
+    </FormContainer>
   )
 }
+
+const FormContainer = styled.div`
+  // --nextui-radius-medium: 8px;
+`
 
 const InputGroup = styled.div`
   width: 100%;
 
-  margin-bottom: 27px;
+  @media (min-width: 780px) {
+    margin-bottom: 27px;
+  }
 `
 
 const DoubleGroup = styled(InputGroup)`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  @media (max-width: 780px) {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  @media (min-width: 780px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
 `
 
 const AddBox = styled.div`

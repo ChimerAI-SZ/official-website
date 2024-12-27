@@ -14,6 +14,39 @@ export const Header = () => {
   const pathname = usePathname()
   const isHome = pathname === "/"
 
+  // 菜单打开时，点击和滚动行为都会关闭菜单
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const mobileMenu = document.querySelector(`.${styles.mobileMenu}`)
+      const mobileButton = document.querySelector(`.${styles.mobileButton}`)
+
+      if (
+        isMenuOpen &&
+        mobileMenu &&
+        mobileButton &&
+        !mobileMenu.contains(event.target as Node) &&
+        !mobileButton.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false)
+      }
+    }
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY
+      setIsScrolled(scrollPosition > 72)
+      if (isMenuOpen) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    document.addEventListener("click", handleClickOutside)
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      document.removeEventListener("click", handleClickOutside)
+    }
+  }, [isMenuOpen])
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY
