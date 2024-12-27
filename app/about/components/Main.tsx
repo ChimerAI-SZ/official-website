@@ -122,7 +122,7 @@ const Title = styled.div`
 const Text = styled.p`
   color: #000;
   font-family: Inter;
-  font-size: ${isTablet ? "20px" : isMobileOnly ? "16px" : "24px"};
+  font-size: ${isMobileOnly ? "16px" : "20px"};
   font-style: normal;
   font-weight: 400;
   line-height: ${isTablet ? "28px" : isMobileOnly ? "20px" : "32px"};
