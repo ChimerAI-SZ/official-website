@@ -102,7 +102,7 @@ const SupplyChain = () => {
         </ItemContainer>
       </ScrollContainer>
       <ButtonGroup>
-        <NavButton onClick={handlePrev} disabled={!canScrollLeft} $isDisabled={!canScrollLeft}>
+        <NavButton onClick={handlePrev} $isDisabled={!canScrollLeft}>
           <div>
             <Image
               src={`/assets/images/services/left_arrow${canScrollLeft ? "" : "_disabled"}.svg`}
@@ -112,7 +112,7 @@ const SupplyChain = () => {
             />
           </div>
         </NavButton>
-        <NavButton onClick={handleNext} disabled={!canScrollRight} $isDisabled={!canScrollRight}>
+        <NavButton onClick={handleNext} $isDisabled={!canScrollRight}>
           <div>
             <Image
               src={`/assets/images/services/right_arrow${canScrollRight ? "" : "_disabled"}.svg`}
@@ -258,7 +258,7 @@ const Card = styled.div<{ $bgImage: string }>`
 
   background-image: url(${props => props.$bgImage});
   background-size: cover;
-  background-position: center;
+  background-position: left;
   background-repeat: no-repeat;
   background-clip: padding-box;
 `
@@ -295,7 +295,7 @@ const ButtonGroup = styled.div`
   ${!isBrowser && `right: 48px;`}
 `
 
-const NavButton = styled.button<{ $isDisabled?: boolean }>`
+const NavButton = styled.div<{ $isDisabled?: boolean }>`
   width: 46px;
   height: 46px;
   border-radius: 50%;
@@ -309,6 +309,8 @@ const NavButton = styled.button<{ $isDisabled?: boolean }>`
 
   color: ${props => (props.$isDisabled ? "#999" : "white")};
   cursor: ${props => (props.$isDisabled ? "not-allowed" : "pointer")};
+
+  z-index: 1;
 
   & > div {
     width: calc(100% - 2px);

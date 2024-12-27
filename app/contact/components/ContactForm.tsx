@@ -66,11 +66,7 @@ const ContactForm = () => {
 
   return (
     <FormContainer>
-      <Form
-        className="w-full max-w-xs flex flex-col gap-4 flex-grow"
-        validationBehavior="native"
-        onSubmit={handleSubmit}
-      >
+      <Form className="w-full flex flex-col gap-4 flex-grow" validationBehavior="native" onSubmit={handleSubmit}>
         <DoubleGroup>
           <Input
             isRequired
@@ -208,6 +204,8 @@ const ContactForm = () => {
 
 const FormContainer = styled.div`
   // --nextui-radius-medium: 8px;
+  flex-shrink: 0;
+  min-width: 50%;
 `
 
 const InputGroup = styled.div`
