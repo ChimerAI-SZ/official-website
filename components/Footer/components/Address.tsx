@@ -16,7 +16,7 @@ const AddressSection = styled.div`
 
   h3 {
     color: #ebebeb;
-    font-family: Manrope;
+    font-family: Inter;
     font-size: 16px;
     font-weight: 600;
     line-height: 24px;
@@ -25,7 +25,7 @@ const AddressSection = styled.div`
 
   p {
     color: #ebebeb;
-    font-family: Manrope;
+    font-family: Inter;
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;

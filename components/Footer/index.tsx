@@ -68,7 +68,7 @@ const Container = styled.div`
 
 const Copyright = styled.div`
   color: #ebebeb;
-  font-family: Manrope;
+  font-family: Inter;
   font-size: 14px;
   font-family: Inter;
   font-style: normal;

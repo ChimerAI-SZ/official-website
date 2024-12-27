@@ -39,7 +39,7 @@ const Logo = styled.h2`
 
 const Description = styled.p`
   color: #ebebeb;
-  font-family: Manrope;
+  font-family: Inter;
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
