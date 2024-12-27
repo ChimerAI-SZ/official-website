@@ -7,28 +7,28 @@ const ProductShowcase = () => {
   const router = useRouter()
 
   return (
-    <section className="relative w-full py-16 md:py-24 bg-gradient-to-b from-[#000B1F] to-[#021033]">
+    <section className="relative w-full py-16 md:py-24 bg-gradient-to-b from-[#000000] to-[#021033]">
       {/* 背景图片 */}
       <div className="absolute inset-0 w-full h-full">
         <Image
           src="/assets/images/home/phone-bg.png"
           alt="Background Pattern"
           fill
-          className="hidden md:block object-cover opacity-100"
+          className="hidden md:block object-cover opacity-[0.7]"
           priority
         />
         <Image
           src="/assets/images/home/xs-phone-bg.png"
           alt="Background Pattern"
           fill
-          className="md:hidden block object-cover opacity-100"
+          className="md:hidden block object-cover opacity-[0.7]"
           priority
         />
         <Image
           src="/assets/images/home/phone-bg-b.png"
           alt="Bottom Background Pattern"
           fill
-          className="object-cover opacity-90"
+          className="object-cover opacity-[0.95]"
           priority
         />
       </div>
