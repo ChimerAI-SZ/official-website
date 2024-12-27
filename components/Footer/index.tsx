@@ -70,7 +70,6 @@ const Copyright = styled.div`
   color: #ebebeb;
   font-family: Inter;
   font-size: 14px;
-  font-family: Inter;
   font-style: normal;
   font-weight: 400;
   line-height: 22px;

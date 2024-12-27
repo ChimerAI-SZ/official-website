@@ -1,5 +1,6 @@
 import type { Viewport, Metadata } from "next"
 import { NextUIProvider } from "@nextui-org/react"
+import { Inter } from "next/font/google"
 
 import StyledJsxRegistry from "./registry"
 
@@ -8,13 +9,21 @@ import "./globals.css"
 import Footer from "@components/Footer"
 import Header from "@components/Header"
 
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"]
+})
+
 export default function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head>
         <link rel="icon" href="/icon.png" />
       </head>

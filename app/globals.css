@@ -28,6 +28,7 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --font-inter: var(--font-inter);
   }
   .dark {
     --background: 222.2 84% 4.9%;
@@ -62,6 +63,6 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-inter), system-ui, sans-serif;
   }
 }
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap");
