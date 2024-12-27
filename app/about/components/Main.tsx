@@ -73,7 +73,7 @@ const AboutContainer = styled.div<DeviceProps>`
 const TextContainer = styled.div<TextContainerProps>`
   font-size: 16px;
   color: #000;
-
+  font-family: Inter;
   ${({ $isBrowser }) => $isBrowser && `width: calc(100% - ${DIMENSIONS.ABOUT_IMAGE.WIDTH}px - 80px);`}
 
   ${({ $isTablet }) => $isTablet && "width: 70vw; margin-top: 72px;"}
@@ -82,6 +82,7 @@ const TextContainer = styled.div<TextContainerProps>`
 `
 const Title = styled.div`
   font-size: 24px;
+  font-family: Inter;
   color: #000;
   & > *:not(:last-child) {
     margin-bottom: 24px;
@@ -89,7 +90,6 @@ const Title = styled.div`
 `
 const Text = styled.p<{ $isTablet: boolean; $isMobileOnly: boolean }>`
   color: #000;
-
   font-family: Inter;
   font-size: ${({ $isTablet, $isMobileOnly }) => ($isTablet ? "20px" : $isMobileOnly ? "16px" : "24px")};
   font-style: normal;

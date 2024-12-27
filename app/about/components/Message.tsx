@@ -82,6 +82,7 @@ const MessageContent = styled.div<{ $isTablet: boolean; $isBrowser: boolean }>`
 
   font-family: Inter;
   font-size: ${({ $isTablet }) => ($isTablet ? "20px" : "24px")};
+
   font-style: normal;
   font-weight: 400;
   line-height: ${({ $isTablet }) => ($isTablet ? "28px" : "34px")};
@@ -93,6 +94,7 @@ const MessageContent = styled.div<{ $isTablet: boolean; $isBrowser: boolean }>`
     font-size: ${({ $isTablet, $isBrowser }) => ($isBrowser ? "24px" : $isTablet ? "20px" : "12px")};
     font-style: normal;
     font-weight: 400;
+    font-family: Inter;
   }
 
   & > img {
@@ -116,6 +118,7 @@ const Signature = styled.div<{ $isMobileOnly: boolean; $isTablet: boolean }>`
   font-style: normal;
   font-weight: 400;
   line-height: 34px;
+  font-family: Inter;
 
   & > span {
     margin-left: 8px;
@@ -125,6 +128,7 @@ const Signature = styled.div<{ $isMobileOnly: boolean; $isTablet: boolean }>`
     -webkit-text-fill-color: transparent;
     font-family: Inter;
     font-size: 24px;
+    font-family: Inter;
     font-style: normal;
     font-weight: 700;
     line-height: 34px;

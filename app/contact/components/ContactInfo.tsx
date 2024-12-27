@@ -38,6 +38,7 @@ const SubTitle = styled.h2`
 
   font-family: Inter;
   font-size: 36px;
+  font-family: Inter;
   font-style: normal;
   font-weight: 700;
   line-height: normal;

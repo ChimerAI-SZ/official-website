@@ -153,6 +153,7 @@ const NavItem = styled.div<{ $active: boolean; $width: number }>`
   color: ${props => (props.$active ? "unset" : "rgba(0, 0, 0, 0.88)")};
   font-weight: ${props => (props.$active ? "700" : "400")};
   font-size: 16px;
+  font-family: Inter;
   line-height: 26px;
 
   &:not(:last-child) {

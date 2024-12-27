@@ -33,6 +33,7 @@ const LogoSection = styled.div`
 
 const Logo = styled.h2`
   font-size: 24px;
+  font-family: Inter;
   margin-bottom: 20px;
 `
 
