@@ -11,14 +11,14 @@ const ProductShowcase = () => {
       {/* 背景图片 */}
       <div className="absolute inset-0 w-full h-full">
         <Image
-          src="/assets/images/home/phone-bg.png"
+          src="/assets/images/home/phone-bg-1.png"
           alt="Background Pattern"
           fill
           className="hidden md:block object-cover opacity-[1]"
           priority
         />
         <Image
-          src="/assets/images/home/xs-phone-bg.png"
+          src="/assets/images/home/xs-phone-bg-1.png"
           alt="Background Pattern"
           fill
           className="md:hidden block object-cover opacity-[1]"
