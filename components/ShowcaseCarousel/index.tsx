@@ -5,7 +5,7 @@ import Image from "next/image"
 const ShowcaseCarousel = () => {
   // 创建三组图片数组，每组15张
   const group1 = Array.from({ length: 15 }, (_, i) => ({
-    image: `/assets/images/dresses/1/${i + 1}.jpeg`,
+    image: `/assets/images/dresses/1/${i + 1}.jpeg?v=1`,
     title: `Dress 1-${i + 1}`
   }))
 
